@@ -66,7 +66,7 @@ export default function App() {
               </div>
             </a>
             <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
-              {['About', 'Services', 'Gallery', 'Location', 'Menu'].map((item) => (
+              {['About', 'Services', 'Gallery', 'Location'].map((item) => (
                 <a 
                   key={item} 
                   href={`#${item.toLowerCase()}`} 
@@ -140,7 +140,7 @@ export default function App() {
               className="lg:hidden bg-neutral-950 border-b border-white/10 overflow-hidden absolute w-full left-0 top-full"
             >
               <div className="px-4 py-6 flex flex-col space-y-4">
-                {['About', 'Services', 'Gallery', 'Location', 'Menu'].map((item) => (
+                {['About', 'Services', 'Gallery', 'Location'].map((item) => (
                   <a
                     key={item}
                     href={`#${item.toLowerCase()}`}
@@ -548,7 +548,11 @@ export default function App() {
               "/gallery (1).jpg",
               "/gallery (2).jpg",
               "/gallery (3).jpg",
-              "/gallery (4).jpg"
+              "/gallery (4).jpg",
+              "/gallery (5).jpg",
+              "/gallery (6).jpg",
+              "/gallery (7).jpg",
+              "/gallery (8).jpg"
             ].map((src, idx) => (
               <motion.div 
                 key={idx}
@@ -726,7 +730,7 @@ export default function App() {
                           <p className="text-neutral-400 text-sm">Mokotów - Garażowa 7 lok. U5, 02-651 Warszawa</p>
                         </div>
                         <div className="flex w-full flex-col sm:flex-row gap-4">
-                          <a href="https://hamsagrillgarazowa.goorder.pl/" target="_blank" rel="noopener noreferrer" className="flex-1 bg-amber-500 text-neutral-950 py-4 px-4 rounded-2xl font-bold flex items-center justify-center hover:bg-amber-400 transition-colors text-sm text-center">
+                          <a href="https://www.hamsagrill.pl/restauracja/hamsa-grill" target="_blank" rel="noopener noreferrer" className="flex-1 bg-amber-500 text-neutral-950 py-4 px-4 rounded-2xl font-bold flex items-center justify-center hover:bg-amber-400 transition-colors text-sm text-center">
                             {t.order.orderOnline}
                           </a>
                           <a href="tel:+48224156789" className="flex-1 bg-white text-neutral-950 py-3 px-4 rounded-2xl font-bold flex flex-col items-center justify-center hover:bg-neutral-100 transition-colors text-sm text-center">
@@ -747,148 +751,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Customer Reviews */}
-      <section id="reviews" className="py-32 relative z-10 bg-neutral-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center mb-20"
-          >
-            <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
-              {t.reviews.title}
-            </motion.h2>
-          </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {t.reviews.items.map((review, i) => (
-              <motion.div
-                key={i}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                className="bg-neutral-900/50 backdrop-blur-xl rounded-3xl border border-white/5 p-8 relative group hover:bg-neutral-800/50 transition-colors"
-              >
-                <div className="flex gap-1 text-amber-500 mb-6">
-                  {[...Array(review.rating)].map((_, j) => (
-                    <Star key={j} className="w-5 h-5 fill-current" />
-                  ))}
-                </div>
-                <p className="text-neutral-300 text-lg mb-8 leading-relaxed italic">
-                  "{review.quote}"
-                </p>
-                <div className="flex items-center gap-4 mt-auto">
-                  <div className="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center text-xl font-serif text-amber-500 border border-white/5">
-                    {review.name.charAt(0)}
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium">{review.name}</h4>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Menu Section */}
-      <section id="menu" className="py-32 relative z-10 bg-neutral-950/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="mb-20 text-center flex flex-col items-center"
-          >
-            <motion.div variants={fadeUp} className="flex items-center gap-4 mb-4">
-              <div className="h-[1px] w-8 bg-amber-500" />
-              <span className="text-amber-500 font-medium tracking-[0.2em] uppercase text-sm">{t.menuSection.subtitle}</span>
-              <div className="h-[1px] w-8 bg-amber-500" />
-            </motion.div>
-            <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-serif font-bold text-white">
-              {t.menuSection.title1} <span className="italic text-neutral-500">{t.menuSection.title2}</span>
-            </motion.h2>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Category 1 */}
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
-              <h3 className="text-2xl font-serif font-bold text-amber-500 mb-8 flex items-center gap-3">
-                <Flame className="h-6 w-6" />
-                {t.menuSection.categories.grilled}
-              </h3>
-              <div className="space-y-8">
-                {[t.menuSection.items.shishTaouk, t.menuSection.items.adanaKebab, t.menuSection.items.mixedGrill].map((item, i) => (
-                  <div key={i} className="group">
-                    <div className="flex justify-between items-baseline mb-2">
-                      <h4 className="text-xl font-medium text-white group-hover:text-amber-400 transition-colors">{item.name}</h4>
-                      <div className="flex-1 border-b border-dashed border-white/20 mx-4 relative top-[-6px]"></div>
-                      <span className="text-lg font-bold text-amber-500">{item.price}</span>
-                    </div>
-                    <p className="text-neutral-400 text-sm leading-relaxed">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Category 2 */}
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
-              <h3 className="text-2xl font-serif font-bold text-amber-500 mb-8 flex items-center gap-3">
-                <ChefHat className="h-6 w-6" />
-                {t.menuSection.categories.kebabs}
-              </h3>
-              <div className="space-y-8">
-                {[t.menuSection.items.falafelWrap, t.menuSection.items.chickenShawarma, t.menuSection.items.beefKebab].map((item, i) => (
-                  <div key={i} className="group">
-                    <div className="flex justify-between items-baseline mb-2">
-                      <h4 className="text-xl font-medium text-white group-hover:text-amber-400 transition-colors">{item.name}</h4>
-                      <div className="flex-1 border-b border-dashed border-white/20 mx-4 relative top-[-6px]"></div>
-                      <span className="text-lg font-bold text-amber-500">{item.price}</span>
-                    </div>
-                    <p className="text-neutral-400 text-sm leading-relaxed">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Category 3 */}
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
-              <h3 className="text-2xl font-serif font-bold text-amber-500 mb-8 flex items-center gap-3">
-                <Utensils className="h-6 w-6" />
-                {t.menuSection.categories.sides}
-              </h3>
-              <div className="space-y-8">
-                {[t.menuSection.items.hummus, t.menuSection.items.babaGanoush, t.menuSection.items.fries].map((item, i) => (
-                  <div key={i} className="group">
-                    <div className="flex justify-between items-baseline mb-2">
-                      <h4 className="text-xl font-medium text-white group-hover:text-amber-400 transition-colors">{item.name}</h4>
-                      <div className="flex-1 border-b border-dashed border-white/20 mx-4 relative top-[-6px]"></div>
-                      <span className="text-lg font-bold text-amber-500">{item.price}</span>
-                    </div>
-                    <p className="text-neutral-400 text-sm leading-relaxed">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-          
-          <motion.div 
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="mt-16 text-center"
-          >
-            <a href="#order" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-medium text-white border border-amber-500/50 hover:bg-amber-500 hover:text-neutral-950 transition-all duration-300">
-              {t.hero.orderNow} <ArrowRight className="h-4 w-4" />
-            </a>
-          </motion.div>
-        </div>
-      </section>
 
 
       {/* Instagram Section */}
@@ -1030,7 +893,7 @@ export default function App() {
                   </div>
                   <h4 className="text-xl font-serif font-bold text-white mb-2">{t.order.mokotow}</h4>
                   <p className="text-neutral-400 text-xs mb-6 px-4">{t.order.mokotowAddress}</p>
-                  <a href="https://hamsagrillgarazowa.goorder.pl/" target="_blank" rel="noopener noreferrer" className="w-full mt-auto py-3 rounded-full font-medium text-white border border-orange-500/50 hover:bg-orange-500 hover:text-neutral-950 transition-all text-sm flex items-center justify-center gap-2">
+                  <a href="https://www.hamsagrill.pl/restauracja/hamsa-grill" target="_blank" rel="noopener noreferrer" className="w-full mt-auto py-3 rounded-full font-medium text-white border border-orange-500/50 hover:bg-orange-500 hover:text-neutral-950 transition-all text-sm flex items-center justify-center gap-2">
                     {t.order.orderOnline} <ArrowRight className="h-4 w-4" />
                   </a>
                 </div>
