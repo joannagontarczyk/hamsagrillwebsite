@@ -774,6 +774,45 @@ export default function App() {
 
 
 
+      {/* Instagram Section */}
+      <section className="pb-32 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" />
+            <div className="relative z-10 text-center">
+              <motion.div 
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={staggerContainer}
+                className="flex flex-col items-center"
+              >
+                <motion.div variants={fadeUp} className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-amber-500 to-orange-600 p-[2px] mb-6">
+                  <div className="w-full h-full bg-neutral-900 rounded-[22px] flex items-center justify-center">
+                    <Instagram className="h-8 w-8 text-amber-500" />
+                  </div>
+                </motion.div>
+                <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
+                  {t.instagram.title} <span className="italic text-neutral-500">{t.instagram.subtitle}</span>
+                </motion.h2>
+                <motion.p variants={fadeUp} className="text-neutral-400 max-w-2xl mx-auto text-lg mb-10">
+                  {t.instagram.description}
+                </motion.p>
+                <motion.a 
+                  variants={fadeUp} 
+                  href="https://www.instagram.com/hamsagrillwarsaw/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-medium text-white border border-amber-500/50 hover:bg-amber-500 hover:text-neutral-950 transition-all duration-300"
+                >
+                  <Instagram className="h-5 w-5" /> {t.instagram.followBtn}
+                </motion.a>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Space Image Modal */}
       <AnimatePresence>
         {selectedSpaceImg && (
