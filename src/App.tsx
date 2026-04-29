@@ -206,7 +206,7 @@ export default function App() {
       </motion.nav>
 
       {/* About Section - Asymmetrical Layout */}
-      <section id="about" className="pt-40 pb-16 relative z-10 overflow-hidden">
+      <section id="about" className="pt-40 pb-8 relative z-10 overflow-hidden">
         <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/5" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
@@ -224,8 +224,8 @@ export default function App() {
                 <span className="text-amber-500 font-medium tracking-[0.2em] uppercase text-sm">{t.about.story}</span>
               </motion.div>
               <motion.h2 variants={fadeUp} className="text-4xl md:text-6xl font-serif font-bold text-white mb-8 leading-tight">
-                {t.about.title1} <br/>
-                <span className="italic text-neutral-500">{t.about.title2}</span>
+                <span className="whitespace-nowrap">{t.about.title1}</span> <br/>
+                <span className="italic text-neutral-500 whitespace-nowrap">{t.about.title2}</span>
               </motion.h2>
               <div className="text-neutral-400 text-lg leading-relaxed mb-10 overflow-hidden">
                 <AnimatePresence>
@@ -301,7 +301,7 @@ export default function App() {
       </section>
 
       {/* Services / Menu Section */}
-      <section id="services" className="py-16 relative z-10">
+      <section id="services" className="py-8 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" />
@@ -318,7 +318,7 @@ export default function App() {
                 <div className="h-[1px] w-8 bg-amber-500" />
                 <span className="text-amber-500 font-medium tracking-[0.2em] uppercase text-sm">{t.services.specialties}</span>
               </motion.div>
-              <motion.h2 variants={fadeUp} className="text-5xl md:text-6xl font-serif font-bold text-white">
+              <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white whitespace-nowrap">
                 {t.services.title1} <span className="italic text-neutral-500">{t.services.title2}</span>
               </motion.h2>
             </div>
@@ -535,7 +535,7 @@ export default function App() {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-16 relative z-10">
+      <section id="gallery" className="py-8 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" />
@@ -594,7 +594,7 @@ export default function App() {
       </section>
 
       {/* Location & Contact - Glassmorphism */}
-      <section id="location" className="py-16 relative z-10">
+      <section id="location" className="py-8 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" />
@@ -775,7 +775,7 @@ export default function App() {
 
 
       {/* Instagram Section */}
-      <section className="pb-32 relative z-10">
+      <section className="pt-8 pb-16 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" />
