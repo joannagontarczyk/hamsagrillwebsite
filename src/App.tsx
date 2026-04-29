@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Clock, Utensils, ChefHat, Star, ArrowRight, Menu, Flame, Globe, Instagram, Calendar, Coffee, Salad, Pizza, Cake, X } from 'lucide-react';
+import { MapPin, Phone, Clock, Utensils, ChefHat, Star, ArrowRight, Menu, Flame, Globe, Instagram, Calendar, Coffee, Salad, Pizza, Cake, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { translations } from './translations';
 
@@ -28,6 +28,11 @@ export default function App() {
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [isCallModalOpen, setIsCallModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  const spaceImages = Array.from({ length: 7 }, (_, i) => `/space (${i + 1}).jpg`);
+  const [currentSpaceImgIndex, setCurrentSpaceImgIndex] = useState(0);
+  const [selectedSpaceImg, setSelectedSpaceImg] = useState<string | null>(null);
+
   const t = translations[lang];
 
   const { scrollYProgress } = useScroll();
@@ -217,9 +222,15 @@ export default function App() {
                 {t.about.title1} <br/>
                 <span className="italic text-neutral-500">{t.about.title2}</span>
               </motion.h2>
-              <motion.p variants={fadeUp} className="text-neutral-400 text-lg leading-relaxed mb-10">
-                {t.about.description}
-              </motion.p>
+              <div className="text-neutral-400 text-lg leading-relaxed mb-10 overflow-hidden">
+                <AnimatePresence>
+                  {t.about.description.map((paragraph, idx) => (
+                    <motion.p key={idx} variants={fadeUp} className="mb-4 last:mb-0">
+                      {paragraph}
+                    </motion.p>
+                  ))}
+                </AnimatePresence>
+              </div>
               
               <motion.div variants={staggerContainer} className="grid sm:grid-cols-2 gap-6 mb-10">
                 {t.about.features.map((feature, idx) => (
@@ -234,48 +245,50 @@ export default function App() {
               </motion.div>
             </motion.div>
             
-            <div className="relative h-[600px] w-full">
-              <motion.div 
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1 }}
-                className="absolute top-0 right-0 w-[80%] h-[70%] rounded-3xl overflow-hidden border border-white/10 shadow-2xl z-10"
-              >
-                <img 
-                  src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
-                  alt="Grilling process" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-neutral-950/20" />
-              </motion.div>
-              
-              <motion.div 
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.3 }}
-                className="absolute bottom-0 left-0 w-[60%] h-[50%] rounded-3xl overflow-hidden border border-white/10 shadow-2xl z-20"
-              >
-                <img 
-                  src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
-                  alt="Fresh ingredients" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-neutral-950/20" />
-              </motion.div>
-
-              {/* Floating Badge */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-32 h-32 bg-neutral-950/80 backdrop-blur-md rounded-full border border-white/10 flex flex-col items-center justify-center shadow-2xl"
-              >
-                <span className="text-3xl font-serif font-bold text-amber-500">100%</span>
-                <span className="text-xs font-medium text-neutral-300 uppercase tracking-wider mt-1">{t.about.fresh}</span>
-              </motion.div>
+            <div className="relative h-[600px] w-full flex flex-col items-center justify-center">
+              <div className="relative w-full h-[500px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl z-10 group">
+                <AnimatePresence mode="wait">
+                  <motion.img 
+                    key={currentSpaceImgIndex}
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    src={spaceImages[currentSpaceImgIndex]}
+                    alt={`Space image ${currentSpaceImgIndex + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-pointer"
+                    onClick={() => setSelectedSpaceImg(spaceImages[currentSpaceImgIndex])}
+                  />
+                </AnimatePresence>
+                <div className="absolute inset-0 bg-neutral-950/20 pointer-events-none" />
+                
+                {/* Carousel Controls */}
+                <button 
+                  onClick={() => setCurrentSpaceImgIndex((prev) => (prev > 0 ? prev - 1 : spaceImages.length - 1))}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-amber-500 rounded-full flex items-center justify-center text-white transition-colors backdrop-blur-sm z-20"
+                >
+                  <ChevronLeft className="h-6 w-6" />
+                </button>
+                <button 
+                  onClick={() => setCurrentSpaceImgIndex((prev) => (prev < spaceImages.length - 1 ? prev + 1 : 0))}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-amber-500 rounded-full flex items-center justify-center text-white transition-colors backdrop-blur-sm z-20"
+                >
+                  <ChevronRight className="h-6 w-6" />
+                </button>
+                
+                {/* Indicators */}
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                  {spaceImages.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentSpaceImgIndex(idx)}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        idx === currentSpaceImgIndex ? 'bg-amber-500 w-6' : 'bg-white/50 hover:bg-white'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -317,7 +330,7 @@ export default function App() {
               <img 
                 src="/Żeberka jagnięce.jpg" 
                 alt="Premium Grilled Meat" 
-                className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700"
+                className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
               <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
@@ -343,7 +356,7 @@ export default function App() {
                 <img 
                   src="/Kanapka Kebab.jpg" 
                   alt="Signature Kebab" 
-                  className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700"
+                  className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
                 <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl group-hover:bg-amber-500/20 transition-colors duration-500" />
@@ -370,7 +383,7 @@ export default function App() {
                 <img 
                   src="https://restaumatic-production.imgix.net/uploads/accounts/23439/media_library/a9584d36-20fd-41e7-a2c1-afb08dee195d.jpg?auto=compress%2Cformat&blur=0&crop=focalpoint&fit=max&fp-x=0.5&fp-y=0.5&h=auto&rect=0%2C0%2C2000%2C1154&w=1920" 
                   alt="Authentic Falafel" 
-                  className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700"
+                  className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
@@ -402,7 +415,7 @@ export default function App() {
               <img 
                 src="/Shakshuka.jpg" 
                 alt="Traditional Breakfast" 
-                className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700"
+                className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
@@ -431,7 +444,7 @@ export default function App() {
               <img 
                 src="/Hummus.jpg" 
                 alt="Meze & Appetizers" 
-                className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700"
+                className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
@@ -460,7 +473,7 @@ export default function App() {
               <img 
                 src="/Pide z salami.jpg" 
                 alt="Pide (Turkish Pizza)" 
-                className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700"
+                className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
@@ -487,9 +500,9 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-orange-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src="https://images.unsplash.com/photo-1587314168485-3236d6710814?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                src="/Baklawa czekoladowa.jpg" 
                 alt="Sweet Desserts" 
-                className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700"
+                className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
@@ -530,14 +543,12 @@ export default function App() {
             </motion.h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-              "https://images.unsplash.com/photo-1593504049359-74330189a345?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-              "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-              "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-              "https://images.unsplash.com/photo-1561651823-34feb02250e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-              "https://images.unsplash.com/photo-1529290130-4ca3753253ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              "/gallery (1).jpg",
+              "/gallery (2).jpg",
+              "/gallery (3).jpg",
+              "/gallery (4).jpg"
             ].map((src, idx) => (
               <motion.div 
                 key={idx}
@@ -880,15 +891,97 @@ export default function App() {
       </section>
 
 
-      {/* Footer */}
-      <footer className="bg-neutral-950 pt-20 pb-10 border-t border-white/5 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-white/5 text-sm text-neutral-500">
-            <p>&copy; {new Date().getFullYear()} Hamsa Grill Restaurant. {t.footer.rights}</p>
-            <p>{t.order.ochotaAddress}</p>
-          </div>
+      {/* Instagram Section */}
+      <section className="bg-neutral-950 py-24 relative z-10 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div 
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="flex flex-col items-center"
+          >
+            <motion.div variants={fadeUp} className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-amber-500 to-orange-600 p-[2px] mb-6">
+              <div className="w-full h-full bg-neutral-900 rounded-[22px] flex items-center justify-center">
+                <Instagram className="h-8 w-8 text-amber-500" />
+              </div>
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
+              {t.instagram.title} <span className="italic text-neutral-500">{t.instagram.subtitle}</span>
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-neutral-400 max-w-2xl mx-auto text-lg mb-10">
+              {t.instagram.description}
+            </motion.p>
+            <motion.a 
+              variants={fadeUp} 
+              href="https://www.instagram.com/hamsagrillwarsaw/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-medium text-white border border-amber-500/50 hover:bg-amber-500 hover:text-neutral-950 transition-all duration-300"
+            >
+              <Instagram className="h-5 w-5" /> {t.instagram.followBtn}
+            </motion.a>
+          </motion.div>
         </div>
-      </footer>
+      </section>
+
+      {/* Space Image Modal */}
+      <AnimatePresence>
+        {selectedSpaceImg && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedSpaceImg(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-neutral-950/90 backdrop-blur-sm cursor-zoom-out"
+          >
+            <motion.img
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              src={selectedSpaceImg}
+              alt="Enlarged view"
+              className="max-w-[90vw] max-h-[90vh] object-contain rounded-2xl shadow-2xl"
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
+            />
+            
+            {/* Modal Carousel Controls */}
+            <button 
+              onClick={(e: React.MouseEvent) => {
+                e.stopPropagation();
+                const currentIndex = spaceImages.indexOf(selectedSpaceImg);
+                if (currentIndex > -1) {
+                  const newIndex = currentIndex > 0 ? currentIndex - 1 : spaceImages.length - 1;
+                  setSelectedSpaceImg(spaceImages[newIndex]);
+                }
+              }}
+              className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 bg-black/50 hover:bg-amber-500 rounded-full flex items-center justify-center text-white transition-colors backdrop-blur-sm z-50 cursor-pointer"
+            >
+              <ChevronLeft className="h-6 w-6 md:h-8 md:w-8" />
+            </button>
+            <button 
+              onClick={(e: React.MouseEvent) => {
+                e.stopPropagation();
+                const currentIndex = spaceImages.indexOf(selectedSpaceImg);
+                if (currentIndex > -1) {
+                  const newIndex = currentIndex < spaceImages.length - 1 ? currentIndex + 1 : 0;
+                  setSelectedSpaceImg(spaceImages[newIndex]);
+                }
+              }}
+              className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 bg-black/50 hover:bg-amber-500 rounded-full flex items-center justify-center text-white transition-colors backdrop-blur-sm z-50 cursor-pointer"
+            >
+              <ChevronRight className="h-6 w-6 md:h-8 md:w-8" />
+            </button>
+
+            <button
+              onClick={() => setSelectedSpaceImg(null)}
+              className="absolute top-6 right-6 text-white/70 hover:text-white bg-black/50 hover:bg-amber-500 p-3 rounded-full transition-colors z-50 cursor-pointer"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Order Online Popup Modal */}
       <AnimatePresence>

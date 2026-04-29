@@ -92,11 +92,15 @@ export const translations = {
       story: "Our Story",
       title1: "Tradition Meets",
       title2: "Modern Taste",
-      description: "Experience the finest grilled meats, authentic falafel, and signature sandwich kebabs. Crafted with passion, served with pride. Located in the heart of Warszawa, Hamsa Grill Restaurant brings the rich, authentic taste of traditional grilling to your table. We take pride in our carefully selected ingredients, time-honored recipes, and dedication to culinary excellence.",
+      description: [
+        "Hamsa Grill is a place where flavor meets care. Inspired by the symbol of the Hamsa – a sign of protection and good fortune – we create cuisine filled with heart and the welcoming spirit of the Middle East. We choose our ingredients with intention, grill with passion, and honor the traditional recipes that have shaped the region’s authentic taste for generations.",
+        "Discover the finest juicy grilled meats, authentic crispy falafel, our signature shawarma, and mezze – small dishes meant for sharing and bringing people together. Crafted with passion, served with pride. We take great pride in our carefully selected ingredients and time‑honored recipes.",
+        "While our flavors stay true to tradition, our presentation embraces a modern, vibrant style. We bring Middle Eastern classics into a fresh, urban dining experience. We want every guest who steps inside to feel embraced by warmth, surrounded by the gentle energy of our space, and accompanied by flavors that remain long after the meal is over."
+      ],
       features: [
-        { title: "Fresh Daily", desc: "Premium ingredients sourced locally" },
+        { title: "Fresh Daily", desc: "Fresh ingredients sourced locally" },
         { title: "Authentic", desc: "Traditional recipes & methods" },
-        { title: "Welcoming", desc: "Clean, modern dining space" },
+        { title: "Welcoming", desc: "Warm and modern dining space" },
         { title: "Fast Service", desc: "Hot and fresh, every time" }
       ],
       fresh: "Fresh",
@@ -126,6 +130,12 @@ export const translations = {
         { quote: "Authentic flavors, great atmosphere, and very friendly staff. Highly recommend the Falafel Wrap.", name: "Anna S.", rating: 5 },
         { quote: "A hidden gem in Mokotów. The meat is always perfectly cooked and the portions are generous.", name: "David R.", rating: 5 }
       ]
+    },
+    instagram: {
+      title: "Follow Us",
+      subtitle: "on Instagram",
+      description: "Get the latest updates, promotions, and mouth-watering photos directly in your feed.",
+      followBtn: "Follow @hamsagrillwarsaw"
     },
     footer: {
       menu: "Menu",
@@ -228,11 +238,15 @@ export const translations = {
       story: "Nasza Historia",
       title1: "Tradycja Spotyka",
       title2: "Nowoczesny Smak",
-      description: "Poznaj najlepsze grillowane mięsa, autentyczny falafel i nasze popisowe kebaby. Tworzone z pasją, serwowane z dumą. Położona w samym sercu Warszawy restauracja Hamsa Grill przenosi bogaty, autentyczny smak tradycyjnego grillowania na Twój stół. Jesteśmy dumni z naszych starannie dobranych składników, sprawdzonych receptur i dbałości o kulinarną doskonałość.",
+      description: [
+        "Hamsa Grill to miejsce, w którym smak spotyka się z troską. Zainspirowani symbolem Hamsy – znakiem ochrony i szczęścia – tworzymy kuchnię pełną serca i gościnnego ducha Bliskiego Wschodu. Składniki wybieramy z intencją, grillujemy z pasją i szanujemy tradycyjne przepisy, które od pokoleń kształtują autentyczny smak tego regionu.",
+        "Odkryj najlepsze, soczyste mięsa z grilla, autentyczny chrupiący falafel, naszą flagową shoarmę i mezze – małe dania stworzone do dzielenia się i zbliżania ludzi. Tworzone z pasją, serwowane z dumą. Jesteśmy niezwykle dumni z naszych starannie wyselekcjonowanych składników i tradycyjnych receptur.",
+        "Chociaż nasze smaki pozostają wierne tradycji, nasz sposób podania przyjmuje nowoczesny, tętniący życiem styl. Przenosimy klasykę Bliskiego Wschodu w świeże, miejskie wrażenia kulinarne. Chcemy, aby każdy gość, który u nas gości, czuł się otoczony ciepłem, łagodną energią naszej przestrzeni, i by towarzyszyły mu smaki, które pozostają długo po zakończeniu posiłku."
+      ],
       features: [
-        { title: "Codziennie Świeże", desc: "Składniki premium od lokalnych dostawców" },
+        { title: "Codziennie Świeże", desc: "Świeże składniki od lokalnych dostawców" },
         { title: "Autentyczne", desc: "Tradycyjne receptury i metody" },
-        { title: "Zapraszające", desc: "Czysta, nowoczesna przestrzeń jadalna" },
+        { title: "Zapraszające", desc: "Ciepła i nowoczesna przestrzeń jadalna" },
         { title: "Szybka Obsługa", desc: "Gorące i świeże, za każdym razem" }
       ],
       fresh: "Świeże",
@@ -262,6 +276,12 @@ export const translations = {
         { quote: "Autentyczne smaki, świetna atmosfera i bardzo przyjazna obsługa. Gorąco polecam Falafel Wrap.", name: "Anna S.", rating: 5 },
         { quote: "Ukryta perełka na Mokotowie. Mięso jest zawsze idealnie przygotowane, a porcje są obfite.", name: "David R.", rating: 5 }
       ]
+    },
+    instagram: {
+      title: "Śledź nas",
+      subtitle: "na Instagramie",
+      description: "Bądź na bieżąco z najnowszymi informacjami, promocjami i apetycznymi zdjęciami.",
+      followBtn: "Obserwuj @hamsagrillwarsaw"
     },
     footer: {
       menu: "Menu",
