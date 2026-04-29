@@ -40,7 +40,10 @@ export default function App() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <div className="relative bg-neutral-950 min-h-screen font-sans text-neutral-200 selection:bg-amber-500/30 selection:text-amber-200">
+    <div 
+      className="relative bg-neutral-950 min-h-screen font-sans text-neutral-200 selection:bg-amber-500/30 selection:text-amber-200 bg-cover bg-center bg-fixed"
+      style={{ backgroundImage: 'url("/Background.png")' }}
+    >
       {/* Ambient Background Glows */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-amber-600/10 blur-[120px]" />
@@ -203,12 +206,14 @@ export default function App() {
       </motion.nav>
 
       {/* About Section - Asymmetrical Layout */}
-      <section id="about" className="py-32 pt-40 relative z-10 overflow-hidden min-h-screen flex items-center">
+      <section id="about" className="pt-40 pb-16 relative z-10 overflow-hidden">
         <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/5" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            <motion.div 
-              initial="hidden"
+          <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" />
+            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10">
+              <motion.div 
+                initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerContainer}
@@ -289,16 +294,20 @@ export default function App() {
                   ))}
                 </div>
               </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Services / Menu Section */}
-      <section id="services" className="py-32 relative z-10">
+      <section id="services" className="py-16 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial="hidden"
+          <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" />
+            <div className="relative z-10">
+              <motion.div 
+                initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
@@ -520,14 +529,19 @@ export default function App() {
               </div>
             </motion.div>
           </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-32 relative z-10 bg-neutral-950">
+      <section id="gallery" className="py-16 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial="hidden"
+          <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" />
+            <div className="relative z-10">
+              <motion.div 
+                initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
@@ -552,7 +566,9 @@ export default function App() {
               "/gallery (5).jpg",
               "/gallery (6).jpg",
               "/gallery (7).jpg",
-              "/gallery (8).jpg"
+              "/gallery (8).jpg",
+              "/gallery (9).jpg",
+              "/gallery (10).jpg"
             ].map((src, idx) => (
               <motion.div 
                 key={idx}
@@ -572,13 +588,15 @@ export default function App() {
               </motion.div>
             ))}
           </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Location & Contact - Glassmorphism */}
-      <section id="location" className="py-32 relative z-10">
+      <section id="location" className="py-16 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-neutral-900/50 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
+          <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" />
             
             <div className="max-w-4xl mx-auto relative z-10">
@@ -755,10 +773,13 @@ export default function App() {
 
 
       {/* Instagram Section */}
-      <section className="bg-neutral-950 py-24 relative z-10 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div 
-            initial="hidden"
+      <section className="py-16 pb-32 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" />
+            <div className="relative z-10 text-center">
+              <motion.div 
+                initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
@@ -785,6 +806,8 @@ export default function App() {
               <Instagram className="h-5 w-5" /> {t.instagram.followBtn}
             </motion.a>
           </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
