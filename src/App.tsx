@@ -773,7 +773,7 @@ export default function App() {
 
 
       {/* Instagram Section */}
-      <section className="py-16 pb-32 relative z-10">
+      <section className="pb-32 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" />
