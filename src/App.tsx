@@ -200,6 +200,15 @@ export default function App() {
               >
                 {t.nav.reservation}
               </button>
+              <a 
+                href="https://www.instagram.com/hamsagrillwarsaw/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-orange-500 hover:text-orange-400 transition-colors ml-2"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-[38px] w-[38px] xl:h-[42px] xl:w-[42px]" />
+              </a>
             </div>
             <div className="lg:hidden flex items-center">
               <button 
@@ -242,11 +251,16 @@ export default function App() {
                   </a>
                 ))}
                 
-                <div className="flex items-center justify-center gap-4 py-4 border-t border-white/10">
-                  <Globe className="h-5 w-5 text-amber-500" />
-                  <button onClick={() => { setLang('pl'); setIsMobileMenuOpen(false); }} className={`font-medium transition-colors ${lang === 'pl' ? 'text-amber-500' : 'text-neutral-400 hover:text-white'}`}>PL</button>
-                  <span className="text-neutral-600">|</span>
-                  <button onClick={() => { setLang('en'); setIsMobileMenuOpen(false); }} className={`font-medium transition-colors ${lang === 'en' ? 'text-amber-500' : 'text-neutral-400 hover:text-white'}`}>EN</button>
+                <div className="relative flex items-center justify-center py-4 border-t border-white/10">
+                  <div className="flex items-center gap-4">
+                    <Globe className="h-5 w-5 text-amber-500" />
+                    <button onClick={() => { setLang('pl'); setIsMobileMenuOpen(false); }} className={`font-medium transition-colors ${lang === 'pl' ? 'text-amber-500' : 'text-neutral-400 hover:text-white'}`}>PL</button>
+                    <span className="text-neutral-600">|</span>
+                    <button onClick={() => { setLang('en'); setIsMobileMenuOpen(false); }} className={`font-medium transition-colors ${lang === 'en' ? 'text-amber-500' : 'text-neutral-400 hover:text-white'}`}>EN</button>
+                  </div>
+                  <a href="https://www.instagram.com/hamsagrillwarsaw/" target="_blank" rel="noopener noreferrer" className="absolute right-4 text-orange-500 hover:text-orange-400 transition-colors" aria-label="Instagram">
+                    <Instagram className="h-6 w-6" />
+                  </a>
                 </div>
 
                 <div className="flex flex-col gap-3 pb-2">
@@ -787,7 +801,7 @@ export default function App() {
                             <span>{t.nav.callNow}</span>
                             <span className="text-xs font-medium text-neutral-600 mt-0.5">+48 570 706 701</span>
                           </a>
-                          <button onClick={() => setIsReservationModalOpen(true)} className="flex-1 bg-neutral-800 text-white py-4 px-4 rounded-2xl font-bold flex items-center justify-center hover:bg-neutral-700 transition-colors border border-white/10 text-sm text-center line-clamp-1">
+                          <button onClick={() => { setReservationLocation(t.reservationForm.locationOchota); setIsReservationModalOpen(true); }} className="flex-1 bg-neutral-800 text-white py-4 px-4 rounded-2xl font-bold flex items-center justify-center hover:bg-neutral-700 transition-colors border border-white/10 text-sm text-center line-clamp-1">
                             {t.nav.reservation}
                           </button>
                         </div>
@@ -861,7 +875,7 @@ export default function App() {
                             <span>{t.nav.callNow}</span>
                             <span className="text-xs font-medium text-neutral-600 mt-0.5">+48 22 41 56789</span>
                           </a>
-                          <button onClick={() => setIsReservationModalOpen(true)} className="flex-1 bg-neutral-800 text-white py-4 px-4 rounded-2xl font-bold flex items-center justify-center hover:bg-neutral-700 transition-colors border border-white/10 text-sm text-center line-clamp-1">
+                          <button onClick={() => { setReservationLocation(t.reservationForm.locationMokotow); setIsReservationModalOpen(true); }} className="flex-1 bg-neutral-800 text-white py-4 px-4 rounded-2xl font-bold flex items-center justify-center hover:bg-neutral-700 transition-colors border border-white/10 text-sm text-center line-clamp-1">
                             {t.nav.reservation}
                           </button>
                         </div>

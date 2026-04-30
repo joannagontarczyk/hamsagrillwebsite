@@ -51,7 +51,7 @@ export const translations = {
       specialties: "Our Specialties",
       title1: "Culinary",
       title2: "Excellence",
-      description: "Every dish is a testament to our dedication to authentic flavors and premium ingredients.",
+      description: "Each dish is a testament to our commitment to authentic flavors and high-quality ingredients.",
       meatTitle: "Premium Grilled Meat",
       meatDesc: "Expertly seasoned and perfectly grilled over an open flame. A true feast for meat lovers seeking authentic, smoky flavors.",
       kebabTitle: "Signature Kebab",
