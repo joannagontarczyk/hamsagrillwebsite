@@ -209,8 +209,27 @@ export default function App() {
       <section id="about" className="pt-40 pb-8 relative z-10 overflow-hidden">
         <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/5" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
+          <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] shadow-2xl shadow-black/50 border border-white/5 p-8 md:p-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" />
+            
+            <motion.div 
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="relative z-20 mb-16 flex flex-col items-center text-center"
+            >
+              <motion.div variants={fadeUp} className="flex items-center justify-center gap-4 mb-6">
+                <div className="h-[1px] w-8 bg-amber-500" />
+                <span className="text-amber-500 font-medium tracking-[0.2em] uppercase text-sm">{t.about.story}</span>
+                <div className="h-[1px] w-8 bg-amber-500" />
+              </motion.div>
+              <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white leading-tight whitespace-normal md:whitespace-nowrap flex flex-wrap justify-center gap-x-3">
+                <span>{t.about.title1}</span>
+                <span className="italic text-neutral-500">{t.about.title2}</span>
+              </motion.h2>
+            </motion.div>
+
             <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10">
               <motion.div 
                 initial="hidden"
@@ -219,14 +238,6 @@ export default function App() {
               variants={staggerContainer}
               className="relative z-20"
             >
-              <motion.div variants={fadeUp} className="flex items-center gap-4 mb-6">
-                <div className="h-[1px] w-8 bg-amber-500" />
-                <span className="text-amber-500 font-medium tracking-[0.2em] uppercase text-sm">{t.about.story}</span>
-              </motion.div>
-              <motion.h2 variants={fadeUp} className="text-4xl md:text-6xl font-serif font-bold text-white mb-8 leading-tight">
-                <span className="whitespace-nowrap">{t.about.title1}</span> <br/>
-                <span className="italic text-neutral-500 whitespace-nowrap">{t.about.title2}</span>
-              </motion.h2>
               <div className="text-neutral-400 text-lg leading-relaxed mb-10 overflow-hidden">
                 <AnimatePresence>
                   {t.about.description.map((paragraph, idx) => (
@@ -303,29 +314,30 @@ export default function App() {
       {/* Services / Menu Section */}
       <section id="services" className="py-8 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
+          <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] shadow-2xl shadow-black/50 border border-white/5 p-8 md:p-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" />
             <div className="relative z-10">
               <motion.div 
                 initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8"
-          >
-            <div className="max-w-2xl">
-              <motion.div variants={fadeUp} className="flex items-center gap-4 mb-4">
-                <div className="h-[1px] w-8 bg-amber-500" />
-                <span className="text-amber-500 font-medium tracking-[0.2em] uppercase text-sm">{t.services.specialties}</span>
+                whileInView="show"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={staggerContainer}
+                className="mb-16 text-center flex flex-col items-center"
+              >
+                <div className="max-w-3xl flex flex-col items-center text-center">
+                  <motion.div variants={fadeUp} className="flex items-center justify-center gap-4 mb-4">
+                    <div className="h-[1px] w-8 bg-amber-500" />
+                    <span className="text-amber-500 font-medium tracking-[0.2em] uppercase text-sm">{t.services.specialties}</span>
+                    <div className="h-[1px] w-8 bg-amber-500" />
+                  </motion.div>
+                  <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white whitespace-normal md:whitespace-nowrap mb-6 flex flex-wrap justify-center gap-x-3">
+                    <span>{t.services.title1}</span> <span className="italic text-neutral-500">{t.services.title2}</span>
+                  </motion.h2>
+                  <motion.p variants={fadeUp} className="text-neutral-400 max-w-xl text-lg text-center">
+                    {t.services.description}
+                  </motion.p>
+                </div>
               </motion.div>
-              <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white whitespace-nowrap">
-                {t.services.title1} <span className="italic text-neutral-500">{t.services.title2}</span>
-              </motion.h2>
-            </div>
-            <motion.p variants={fadeUp} className="text-neutral-400 max-w-md text-lg">
-              {t.services.description}
-            </motion.p>
-          </motion.div>
 
           <div className="grid md:grid-cols-12 gap-6">
             {/* Large Feature Card */}
@@ -537,7 +549,7 @@ export default function App() {
       {/* Gallery Section */}
       <section id="gallery" className="py-8 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
+          <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] shadow-2xl shadow-black/50 border border-white/5 p-8 md:p-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" />
             <div className="relative z-10">
               <motion.div 
@@ -552,8 +564,8 @@ export default function App() {
               <span className="text-amber-500 font-medium tracking-[0.2em] uppercase text-sm">{t.gallery.subtitle}</span>
               <div className="h-[1px] w-8 bg-amber-500" />
             </motion.div>
-            <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-serif font-bold text-white">
-              {t.gallery.title1} <span className="italic text-neutral-500">{t.gallery.title2}</span>
+            <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-serif font-bold text-white flex flex-wrap justify-center gap-x-3 whitespace-normal md:whitespace-nowrap">
+              <span>{t.gallery.title1}</span> <span className="italic text-neutral-500">{t.gallery.title2}</span>
             </motion.h2>
           </motion.div>
 
@@ -596,7 +608,7 @@ export default function App() {
       {/* Location & Contact - Glassmorphism */}
       <section id="location" className="py-8 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
+          <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] shadow-2xl shadow-black/50 border border-white/5 p-8 md:p-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" />
             
             <div className="max-w-4xl mx-auto relative z-10">
@@ -606,16 +618,19 @@ export default function App() {
                 viewport={{ once: true }}
                 variants={staggerContainer}
               >
-                <motion.div variants={fadeUp} className="flex items-center gap-4 mb-4">
-                  <div className="h-[1px] w-8 bg-amber-500" />
-                  <span className="text-amber-500 font-medium tracking-[0.2em] uppercase text-sm">{t.location.subtitle}</span>
-                </motion.div>
-                <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
-                  {t.location.visitUs}
-                </motion.h2>
-                <motion.p variants={fadeUp} className="text-neutral-400 text-lg mb-12 max-w-2xl">
-                  {t.location.description}
-                </motion.p>
+                <div className="flex flex-col items-center text-center">
+                  <motion.div variants={fadeUp} className="flex items-center gap-4 mb-4">
+                    <div className="h-[1px] w-8 bg-amber-500" />
+                    <span className="text-amber-500 font-medium tracking-[0.2em] uppercase text-sm">{t.location.subtitle}</span>
+                    <div className="h-[1px] w-8 bg-amber-500" />
+                  </motion.div>
+                  <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
+                    {t.location.visitUs}
+                  </motion.h2>
+                  <motion.p variants={fadeUp} className="text-neutral-400 text-lg mb-12 max-w-xl">
+                    {t.location.description}
+                  </motion.p>
+                </div>
 
                 <div className="space-y-16">
                   {/* Ochota Segment */}
@@ -777,7 +792,7 @@ export default function App() {
       {/* Instagram Section */}
       <section className="pt-8 pb-16 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden">
+          <div className="bg-neutral-800 backdrop-blur-2xl rounded-[3rem] shadow-2xl shadow-black/50 border border-white/5 p-8 md:p-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" />
             <div className="relative z-10 text-center">
               <motion.div 
@@ -792,8 +807,8 @@ export default function App() {
                     <Instagram className="h-8 w-8 text-amber-500" />
                   </div>
                 </motion.div>
-                <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
-                  {t.instagram.title} <span className="italic text-neutral-500">{t.instagram.subtitle}</span>
+                <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-serif font-bold text-white mb-4 flex flex-wrap justify-center gap-x-3 whitespace-normal md:whitespace-nowrap">
+                  <span>{t.instagram.title}</span> <span className="italic text-neutral-500">{t.instagram.subtitle}</span>
                 </motion.h2>
                 <motion.p variants={fadeUp} className="text-neutral-400 max-w-2xl mx-auto text-lg mb-10">
                   {t.instagram.description}
