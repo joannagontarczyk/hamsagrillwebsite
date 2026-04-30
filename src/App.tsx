@@ -336,8 +336,9 @@ export default function App() {
                     <span className="text-amber-500 font-medium tracking-[0.2em] uppercase text-sm">{t.services.specialties}</span>
                     <div className="h-[1px] w-8 bg-amber-500" />
                   </motion.div>
-                  <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white whitespace-normal md:whitespace-nowrap mb-6 flex flex-wrap justify-center gap-x-3">
-                    <span>{t.services.title1}</span> <span className="italic text-neutral-500">{t.services.title2}</span>
+                  <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 flex flex-col sm:flex-row justify-center items-center gap-y-1 sm:gap-y-0 sm:gap-x-3">
+                    <span className="text-center">{t.services.title1}</span> 
+                    <span className="italic text-neutral-500 text-center">{t.services.title2}</span>
                   </motion.h2>
                   <motion.p variants={fadeUp} className="text-neutral-400 max-w-xl text-lg text-center">
                     {t.services.description}
@@ -572,8 +573,9 @@ export default function App() {
               <span className="text-amber-500 font-medium tracking-[0.2em] uppercase text-sm">{t.gallery.subtitle}</span>
               <div className="h-[1px] w-8 bg-amber-500" />
             </motion.div>
-            <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-serif font-bold text-white flex flex-wrap justify-center gap-x-3 whitespace-normal md:whitespace-nowrap">
-              <span>{t.gallery.title1}</span> <span className="italic text-neutral-500">{t.gallery.title2}</span>
+            <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-serif font-bold text-white flex flex-col sm:flex-row justify-center items-center gap-y-1 sm:gap-y-0 sm:gap-x-3">
+              <span className="text-center">{t.gallery.title1}</span> 
+              <span className="italic text-neutral-500 text-center">{t.gallery.title2}</span>
             </motion.h2>
           </motion.div>
 
@@ -816,8 +818,9 @@ export default function App() {
                     <Instagram className="h-8 w-8 text-amber-500" />
                   </div>
                 </motion.div>
-                <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-serif font-bold text-white mb-4 flex flex-wrap justify-center gap-x-3 whitespace-normal md:whitespace-nowrap">
-                  <span>{t.instagram.title}</span> <span className="italic text-neutral-500">{t.instagram.subtitle}</span>
+                <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-serif font-bold text-white mb-4 flex flex-col sm:flex-row justify-center items-center gap-y-1 sm:gap-y-0 sm:gap-x-3">
+                  <span className="text-center">{t.instagram.title}</span> 
+                  <span className="italic text-neutral-500 text-center">{t.instagram.subtitle}</span>
                 </motion.h2>
                 <motion.p variants={fadeUp} className="text-neutral-400 max-w-2xl mx-auto text-lg mb-10">
                   {t.instagram.description}
