@@ -230,38 +230,26 @@ export default function App() {
               </motion.h2>
             </motion.div>
 
-            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10">
+            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start relative z-10">
               <motion.div 
                 initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerContainer}
-              className="relative z-20"
+              className="relative z-20 h-full lg:h-[500px] flex flex-col"
             >
-              <div className="text-neutral-400 text-lg leading-relaxed mb-10 overflow-hidden">
+              <div className="text-neutral-300 text-sm md:text-base leading-relaxed flex flex-col justify-between gap-6 lg:gap-0 py-2 h-full w-full">
                 <AnimatePresence>
                   {t.about.description.map((paragraph, idx) => (
-                    <motion.p key={idx} variants={fadeUp} className="mb-4 last:mb-0">
+                    <motion.p key={idx} variants={fadeUp}>
                       {paragraph}
                     </motion.p>
                   ))}
                 </AnimatePresence>
               </div>
-              
-              <motion.div variants={staggerContainer} className="grid sm:grid-cols-2 gap-6 mb-10">
-                {t.about.features.map((feature, idx) => (
-                  <motion.div key={idx} variants={fadeUp} className="flex flex-col gap-2">
-                    <div className="flex items-center gap-2 text-white font-medium">
-                      <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                      {feature.title}
-                    </div>
-                    <span className="text-sm text-neutral-500 pl-3.5">{feature.desc}</span>
-                  </motion.div>
-                ))}
-              </motion.div>
             </motion.div>
             
-            <div className="relative h-[600px] w-full flex flex-col items-center justify-center">
+            <div className="relative w-full flex flex-col">
               <div className="relative w-full h-[500px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl z-10 group">
                 <AnimatePresence mode="wait">
                   <motion.img 
@@ -307,6 +295,24 @@ export default function App() {
               </div>
               </div>
             </div>
+
+            <motion.div 
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+              className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 relative z-10"
+            >
+              {t.about.features.map((feature, idx) => (
+                <motion.div key={idx} variants={fadeUp} className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2 text-white font-medium">
+                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                    {feature.title}
+                  </div>
+                  <span className="text-sm text-neutral-500 pl-3.5">{feature.desc}</span>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
@@ -670,12 +676,12 @@ export default function App() {
                         </div>
                         <div className="w-full">
                           <h4 className="text-white font-medium text-lg mb-4">{t.location.openingHours}</h4>
-                          <div className="flex flex-col text-neutral-400">
-                            <div className="flex justify-between items-center">
+                          <div className="flex flex-col text-neutral-400 gap-4 sm:gap-2">
+                            <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
                               <span>{t.location.monSat}</span>
                               <span className="text-white font-medium">10:00 AM – 11:00 PM</span>
                             </div>
-                            <div className="flex justify-between items-center">
+                            <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
                               <span>{t.location.sunday}</span>
                               <span className="text-white font-medium">11:00 AM – 10:00 PM</span>
                             </div>
@@ -744,12 +750,12 @@ export default function App() {
                         </div>
                         <div className="w-full">
                           <h4 className="text-white font-medium text-lg mb-4">{t.location.openingHours}</h4>
-                          <div className="flex flex-col text-neutral-400">
-                            <div className="flex justify-between items-center">
+                          <div className="flex flex-col text-neutral-400 gap-4 sm:gap-2">
+                            <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
                               <span>{t.location.monSat}</span>
                               <span className="text-white font-medium">10:00 AM – 11:00 PM</span>
                             </div>
-                            <div className="flex justify-between items-center">
+                            <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
                               <span>{t.location.sunday}</span>
                               <span className="text-white font-medium">11:00 AM – 10:00 PM</span>
                             </div>
