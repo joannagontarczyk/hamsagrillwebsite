@@ -33,7 +33,7 @@ export default function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 2000);
+    }, 2500);
     return () => clearTimeout(timer);
   }, []);
   
@@ -52,7 +52,8 @@ export default function App() {
       <AnimatePresence>
         {showSplash && (
           <motion.div
-            initial={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
             className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/40 backdrop-blur-sm pointer-events-none"
@@ -60,10 +61,10 @@ export default function App() {
             <motion.img 
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
               src="/Hamsa (alone).png" 
               alt="Hamsa Grill Logo" 
-              className="w-[80vw] h-[80vh] object-contain drop-shadow-[0_0_20px_rgba(245,158,11,0.4)]"
+              className="w-[80vw] h-[80vh] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.7)] drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]"
             />
           </motion.div>
         )}
