@@ -195,7 +195,7 @@ export default function App() {
               </button>
 
               <button 
-                onClick={() => setIsReservationModalOpen(true)}
+                onClick={() => { setReservationLocation(''); setIsReservationModalOpen(true); }}
                 className="bg-neutral-800 text-white px-4 xl:px-6 py-2.5 rounded-2xl font-bold flex items-center justify-center hover:bg-neutral-700 transition-colors border border-white/10 whitespace-nowrap text-xs xl:text-sm tracking-wide"
               >
                 {t.nav.reservation}
@@ -287,7 +287,7 @@ export default function App() {
                   </button>
 
                   <button 
-                    onClick={() => { setIsReservationModalOpen(true); setIsMobileMenuOpen(false); }}
+                    onClick={() => { setReservationLocation(''); setIsReservationModalOpen(true); setIsMobileMenuOpen(false); }}
                     className="w-full bg-neutral-800 text-white py-3.5 px-4 rounded-2xl font-bold flex items-center justify-center hover:bg-neutral-700 transition-colors border border-white/10 tracking-wide text-sm text-center"
                   >
                     {t.nav.reservation}
