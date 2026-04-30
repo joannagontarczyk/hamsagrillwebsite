@@ -224,8 +224,8 @@ export default function App() {
                 <span className="text-amber-500 font-medium tracking-[0.2em] uppercase text-sm">{t.about.story}</span>
                 <div className="h-[1px] w-8 bg-amber-500" />
               </motion.div>
-              <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white leading-tight whitespace-normal md:whitespace-nowrap flex flex-wrap justify-center gap-x-3">
-                <span>{t.about.title1}</span>
+              <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white leading-tight whitespace-normal md:whitespace-nowrap">
+                <span>{t.about.title1}</span> <br />
                 <span className="italic text-neutral-500">{t.about.title2}</span>
               </motion.h2>
             </motion.div>
@@ -354,14 +354,16 @@ export default function App() {
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
-              <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
-                <div className="w-14 h-14 rounded-2xl bg-amber-500/20 backdrop-blur-md flex items-center justify-center mb-6 border border-amber-500/30">
-                  <Utensils className="h-6 w-6 text-amber-400" />
+              <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-between md:justify-end">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-amber-500/20 backdrop-blur-md flex items-center justify-center mb-6 border border-amber-500/30">
+                  <Utensils className="h-5 w-5 md:h-6 md:w-6 text-amber-400" />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4">{t.services.meatTitle}</h3>
-                <p className="text-neutral-300 text-lg max-w-md leading-relaxed">
-                  {t.services.meatDesc}
-                </p>
+                <div>
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-white mb-3 md:mb-4">{t.services.meatTitle}</h3>
+                  <p className="text-neutral-300 text-base md:text-lg max-w-md leading-relaxed">
+                    {t.services.meatDesc}
+                  </p>
+                </div>
               </div>
             </motion.div>
 
@@ -372,7 +374,7 @@ export default function App() {
                 whileInView="show"
                 viewport={{ once: true }}
                 variants={scaleIn}
-                className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 flex-1 p-8 hover:border-amber-500/30 transition-colors duration-500"
+                className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 flex-1 min-h-[320px] p-8 hover:border-amber-500/30 transition-colors duration-500"
               >
                 <img 
                   src="/Kanapka Kebab.jpg" 
@@ -399,7 +401,7 @@ export default function App() {
                 whileInView="show"
                 viewport={{ once: true }}
                 variants={scaleIn}
-                className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 flex-1 p-8 hover:border-orange-500/30 transition-colors duration-500"
+                className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 flex-1 min-h-[320px] p-8 hover:border-orange-500/30 transition-colors duration-500"
               >
                 <img 
                   src="https://restaumatic-production.imgix.net/uploads/accounts/23439/media_library/a9584d36-20fd-41e7-a2c1-afb08dee195d.jpg?auto=compress%2Cformat&blur=0&crop=focalpoint&fit=max&fp-x=0.5&fp-y=0.5&h=auto&rect=0%2C0%2C2000%2C1154&w=1920" 
@@ -580,7 +582,8 @@ export default function App() {
               "/gallery (7).jpg",
               "/gallery (8).jpg",
               "/gallery (9).jpg",
-              "/gallery (10).jpg"
+              "/gallery (10).jpg",
+              "/gallery (11).jpg"
             ].map((src, idx) => (
               <motion.div 
                 key={idx}

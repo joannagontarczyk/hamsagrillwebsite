@@ -4,7 +4,7 @@ export const translations = {
       order: "Order",
       menu: "Menu",
       services: "Our Specialities",
-      about: "Our Story",
+      about: "About Us",
       gallery: "Gallery",
       location: "Visit Us",
       callNow: "Call Now",
@@ -89,7 +89,7 @@ export const translations = {
       }
     },
     about: {
-      story: "Our Story",
+      story: "About Us",
       title1: "Tradition Meets",
       title2: "Modern Taste",
       description: [
@@ -150,7 +150,7 @@ export const translations = {
       order: "Zamów",
       menu: "Menu",
       services: "Nasze Specjalności",
-      about: "Nasza Historia",
+      about: "O Nas",
       gallery: "Galeria",
       location: "Odwiedź Nas",
       callNow: "Zadzwoń",
@@ -235,7 +235,7 @@ export const translations = {
       }
     },
     about: {
-      story: "Nasza Historia",
+      story: "O Nas",
       title1: "Tradycja Spotyka",
       title2: "Nowoczesny Smak",
       description: [
