@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, Phone, Clock, Utensils, ChefHat, Star, ArrowRight, Menu, Flame, Globe, Instagram, Calendar, Coffee, Salad, Pizza, Cake, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, Phone, Clock, Utensils, ChefHat, Star, ArrowRight, Menu, Flame, Globe, Instagram, Calendar, Coffee, Salad, Pizza, Cake, X, ChevronLeft, ChevronRight, Mail } from 'lucide-react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { translations } from './translations';
 
@@ -827,47 +827,66 @@ export default function App() {
                 <div className="space-y-16">
                   {/* Ochota Segment */}
                   <motion.div variants={fadeUp} className="flex flex-col gap-8">
-                    <div className="grid sm:grid-cols-2 gap-8 relative z-10">
+                    <div className="grid sm:grid-cols-2 gap-8 relative z-10 items-stretch">
                       
                       {/* Address */}
-                      <div className="flex items-start gap-6 group">
-                        <div className="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 group-hover:text-amber-400 transition-colors">
-                          <MapPin className="h-5 w-5" />
+                      <div className="flex flex-col justify-between h-full">
+                        <div className="flex items-start gap-6 group">
+                          <div className="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 group-hover:text-amber-400 transition-colors">
+                            <MapPin className="h-5 w-5" />
+                          </div>
+                          <div className="w-full">
+                            <h4 className="text-white font-medium text-lg mb-2">Hamsa Grill Restaurant - {t.order.ochota}</h4>
+                            <p className="text-neutral-400 leading-relaxed">
+                              {t.order.ochotaAddress.split(',')[0]}<br />
+                              {t.order.ochotaAddress.split(',')[1].trim()}<br />
+                              {t.order.country}
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <h4 className="text-white font-medium text-lg mb-2">Hamsa Grill Restaurant - {t.order.ochota}</h4>
-                          <p className="text-neutral-400 leading-relaxed">
-                            {t.order.ochotaAddress.split(',')[0]}<br />
-                            {t.order.ochotaAddress.split(',')[1].trim()}<br />
-                            {t.order.country}
-                          </p>
-                          <a 
-                            href="https://maps.app.goo.gl/WEbA3kEZM2SJbvtp9" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 text-amber-500 mt-3 text-sm font-medium hover:text-amber-400 transition-colors"
-                          >
-                            {t.location.getDirections} <ArrowRight className="h-4 w-4" />
-                          </a>
+                        <div className="flex items-center gap-6 mt-4 sm:mt-0">
+                          <div className="w-12 h-12 flex-shrink-0"></div>
+                          <div className="w-full">
+                            <a 
+                              href="https://maps.app.goo.gl/WEbA3kEZM2SJbvtp9" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 text-amber-500 text-sm font-medium hover:text-amber-400 transition-colors"
+                            >
+                              {t.location.getDirections} <ArrowRight className="h-4 w-4" />
+                            </a>
+                          </div>
                         </div>
                       </div>
 
-                      {/* Opening Hours */}
-                      <div className="flex items-start gap-6 group">
-                        <div className="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 group-hover:text-amber-400 transition-colors">
-                          <Clock className="h-5 w-5" />
+                      {/* Opening Hours & Email */}
+                      <div className="flex flex-col justify-between h-full">
+                        <div className="flex items-start gap-6 group">
+                          <div className="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 group-hover:text-amber-400 transition-colors">
+                            <Clock className="h-5 w-5" />
+                          </div>
+                          <div className="w-full">
+                            <h4 className="text-white font-medium text-lg mb-4">{t.location.openingHours}</h4>
+                            <div className="flex flex-col text-neutral-400 gap-4 sm:gap-2">
+                              <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
+                                <span>{t.location.monSat}</span>
+                                <span className="text-white font-medium">{t.location.monSatHours}</span>
+                              </div>
+                              <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
+                                <span>{t.location.sunday}</span>
+                                <span className="text-white font-medium">{t.location.sundayHours}</span>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <div className="w-full">
-                          <h4 className="text-white font-medium text-lg mb-4">{t.location.openingHours}</h4>
-                          <div className="flex flex-col text-neutral-400 gap-4 sm:gap-2">
-                            <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
-                              <span>{t.location.monSat}</span>
-                              <span className="text-white font-medium">{t.location.monSatHours}</span>
-                            </div>
-                            <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
-                              <span>{t.location.sunday}</span>
-                              <span className="text-white font-medium">{t.location.sundayHours}</span>
-                            </div>
+
+                        {/* Email */}
+                        <div className="flex items-center gap-6 group">
+                          <div className="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 group-hover:text-amber-400 transition-colors">
+                            <Mail className="h-5 w-5" />
+                          </div>
+                          <div className="w-full text-neutral-400">
+                            Email: <a href="mailto:kontakt@hamsagrill.com.pl" className="text-white font-medium hover:text-amber-400 transition-colors">kontakt@hamsagrill.com.pl</a>
                           </div>
                         </div>
                       </div>
@@ -901,47 +920,66 @@ export default function App() {
 
                   {/* Mokotow Segment */}
                   <motion.div variants={fadeUp} className="flex flex-col gap-8">
-                    <div className="grid sm:grid-cols-2 gap-8 relative z-10">
+                    <div className="grid sm:grid-cols-2 gap-8 relative z-10 items-stretch">
                       
                       {/* Address */}
-                      <div className="flex items-start gap-6 group">
-                        <div className="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 group-hover:text-amber-400 transition-colors">
-                          <MapPin className="h-5 w-5" />
+                      <div className="flex flex-col justify-between h-full">
+                        <div className="flex items-start gap-6 group">
+                          <div className="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 group-hover:text-amber-400 transition-colors">
+                            <MapPin className="h-5 w-5" />
+                          </div>
+                          <div className="w-full">
+                            <h4 className="text-white font-medium text-lg mb-2">Hamsa Grill - {t.order.mokotow}</h4>
+                            <p className="text-neutral-400 leading-relaxed">
+                              {t.order.mokotowAddress.split(',')[0]}<br />
+                              {t.order.mokotowAddress.split(',')[1].trim()}<br />
+                              {t.order.country}
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <h4 className="text-white font-medium text-lg mb-2">Hamsa Grill - {t.order.mokotow}</h4>
-                          <p className="text-neutral-400 leading-relaxed">
-                            {t.order.mokotowAddress.split(',')[0]}<br />
-                            {t.order.mokotowAddress.split(',')[1].trim()}<br />
-                            {t.order.country}
-                          </p>
-                          <a 
-                            href="https://maps.app.goo.gl/WWu88f5Caz8WtwfCA" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 text-amber-500 mt-3 text-sm font-medium hover:text-amber-400 transition-colors"
-                          >
-                            {t.location.getDirections} <ArrowRight className="h-4 w-4" />
-                          </a>
+                        <div className="flex items-center gap-6 mt-4 sm:mt-0">
+                          <div className="w-12 h-12 flex-shrink-0"></div>
+                          <div className="w-full">
+                            <a 
+                              href="https://maps.app.goo.gl/WWu88f5Caz8WtwfCA" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 text-amber-500 text-sm font-medium hover:text-amber-400 transition-colors"
+                            >
+                              {t.location.getDirections} <ArrowRight className="h-4 w-4" />
+                            </a>
+                          </div>
                         </div>
                       </div>
 
-                      {/* Opening Hours */}
-                      <div className="flex items-start gap-6 group">
-                        <div className="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 group-hover:text-amber-400 transition-colors">
-                          <Clock className="h-5 w-5" />
+                      {/* Opening Hours & Email */}
+                      <div className="flex flex-col justify-between h-full">
+                        <div className="flex items-start gap-6 group">
+                          <div className="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 group-hover:text-amber-400 transition-colors">
+                            <Clock className="h-5 w-5" />
+                          </div>
+                          <div className="w-full">
+                            <h4 className="text-white font-medium text-lg mb-4">{t.location.openingHours}</h4>
+                            <div className="flex flex-col text-neutral-400 gap-4 sm:gap-2">
+                              <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
+                                <span>{t.location.monSat}</span>
+                                <span className="text-white font-medium">{t.location.monSatHours}</span>
+                              </div>
+                              <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
+                                <span>{t.location.sunday}</span>
+                                <span className="text-white font-medium">{t.location.sundayHours}</span>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <div className="w-full">
-                          <h4 className="text-white font-medium text-lg mb-4">{t.location.openingHours}</h4>
-                          <div className="flex flex-col text-neutral-400 gap-4 sm:gap-2">
-                            <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
-                              <span>{t.location.monSat}</span>
-                              <span className="text-white font-medium">{t.location.monSatHours}</span>
-                            </div>
-                            <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
-                              <span>{t.location.sunday}</span>
-                              <span className="text-white font-medium">{t.location.sundayHours}</span>
-                            </div>
+
+                        {/* Email */}
+                        <div className="flex items-center gap-6 group">
+                          <div className="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 group-hover:text-amber-400 transition-colors">
+                            <Mail className="h-5 w-5" />
+                          </div>
+                          <div className="w-full text-neutral-400">
+                            Email: <a href="mailto:kontakt@hamsagrill.pl" className="text-white font-medium hover:text-amber-400 transition-colors">kontakt@hamsagrill.pl</a>
                           </div>
                         </div>
                       </div>
