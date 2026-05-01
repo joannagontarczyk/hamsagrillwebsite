@@ -1155,7 +1155,7 @@ export default function App() {
                   <p className="text-neutral-400 text-xs mb-6 px-4">
                     {t.order.ochotaAddress.split(',')[0]}<br />
                     {t.order.ochotaAddress.split(',')[1].trim()}<br />
-                    <span className="block mt-1 text-neutral-500">(pick-up, dine in)</span>
+                    <span className="block mt-2 text-white-400">{t.order.ochotaOptions}</span>
                   </p>
                   <a href="https://hamsagrillrestaurant.goorder.pl/" target="_blank" rel="noopener noreferrer" className="w-full mt-auto py-3 rounded-full font-medium text-white border border-amber-500/50 hover:bg-amber-500 hover:text-neutral-950 transition-all text-sm flex items-center justify-center gap-2">
                     {t.order.orderOnline} <ArrowRight className="h-4 w-4" />
@@ -1166,11 +1166,11 @@ export default function App() {
                   <div className="w-12 h-12 rounded-xl bg-neutral-800 flex items-center justify-center mb-4 border border-white/5 group-hover:border-orange-500/30 transition-colors">
                     <MapPin className="h-6 w-6 text-orange-400" />
                   </div>
-                  <h4 className="text-xl font-serif font-bold text-white mb-2">{t.order.mokotow}</h4>
+                  <h4 className="text-xl font-serif font-bold text-white mb-0">{t.order.mokotow}</h4>
                   <p className="text-neutral-400 text-xs mb-6 px-4">
                     {t.order.mokotowAddress.split(',')[0]}<br />
                     {t.order.mokotowAddress.split(',')[1].trim()}<br />
-                    <span className="block mt-1 text-neutral-500">(pick-up, delivery)</span>
+                    <span className="block mt-2 text-white-400">{t.order.mokotowOptions}</span>
                   </p>
                   <a href="https://www.hamsagrill.pl/restauracja/hamsa-grill" target="_blank" rel="noopener noreferrer" className="w-full mt-auto py-3 rounded-full font-medium text-white border border-orange-500/50 hover:bg-orange-500 hover:text-neutral-950 transition-all text-sm flex items-center justify-center gap-2">
                     {t.order.orderOnline} <ArrowRight className="h-4 w-4" />
@@ -1220,7 +1220,7 @@ export default function App() {
                   <p className="text-neutral-400 text-xs mb-6 px-4">
                     {t.order.ochotaAddress.split(',')[0]}<br />
                     {t.order.ochotaAddress.split(',')[1].trim()}<br />
-                    <span className="block mt-1 text-neutral-500">(pick-up, dine in)</span>
+                    <span className="block mt-2 text-white-400">{t.order.ochotaOptions}</span>
                   </p>
                   <a href="tel:+48570706701" className="w-full mt-auto py-3 rounded-full font-bold text-neutral-950 bg-white hover:bg-neutral-100 transition-all text-sm flex flex-col items-center justify-center">
                     <span>{t.order.callNow}</span>
@@ -1236,7 +1236,7 @@ export default function App() {
                   <p className="text-neutral-400 text-xs mb-6 px-4">
                     {t.order.mokotowAddress.split(',')[0]}<br />
                     {t.order.mokotowAddress.split(',')[1].trim()}<br />
-                    <span className="block mt-1 text-neutral-500">(pick-up, delivery)</span>
+                    <span className="block mt-2 text-white-400">{t.order.mokotowOptions}</span>
                   </p>
                   <a href="tel:+48224156789" className="w-full mt-auto py-3 rounded-full font-bold text-neutral-950 bg-white hover:bg-neutral-100 transition-all text-sm flex flex-col items-center justify-center">
                     <span>{t.order.callNow}</span>

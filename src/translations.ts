@@ -45,8 +45,10 @@ export const translations = {
       callNow: "Call Now",
       ochota: "Ochota",
       ochotaAddress: "Grójecka 20C, 02-301 Warsaw",
+      ochotaOptions: "(pick-up, dine in)",
       mokotow: "Mokotów",
       mokotowAddress: "Garażowa 7 lok. U5, 02-651 Warsaw",
+      mokotowOptions: "(pick-up, delivery)",
       country: "Poland",
     },
     services: {
@@ -195,8 +197,10 @@ export const translations = {
       callNow: "Zadzwoń",
       ochota: "Ochota",
       ochotaAddress: "Grójecka 20C, 02-301 Warszawa",
+      ochotaOptions: "(odbiór własny, na miejscu)",
       mokotow: "Mokotów",
       mokotowAddress: "Garażowa 7 lok. U5, 02-651 Warszawa",
+      mokotowOptions: "(odbiór własny, dostawa)",
       country: "Polska",
     },
     services: {
