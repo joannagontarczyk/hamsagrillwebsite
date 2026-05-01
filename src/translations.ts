@@ -200,7 +200,7 @@ export const translations = {
       title1: "Kulinarna",
       title2: "Doskonałość",
       description: "Każde danie jest świadectwem naszego oddania autentycznym smakom i składnikom najwyższej jakości.",
-      meatTitle: "Grillowane Mięso Jakościowe",
+      meatTitle: "Wyselekcjonowane Grillowane Mięso",
       meatDesc: "Fachowo przyprawione i idealnie grillowane na otwartym ogniu. Prawdziwa uczta dla miłośników mięsa szukających autentycznych, dymnych smaków.",
       kebabTitle: "Popisowy Kebab",
       kebabDesc: "Oryginalna bliskowschodnia shawarma, przygotowywana na miejscu z grillowanego mięsa, podawana z soczystymi i chrupiącymi warzywami.",

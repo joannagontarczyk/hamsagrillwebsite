@@ -25,6 +25,9 @@ export default function App() {
   const [lang, setLang] = useState<'en' | 'pl'>('en');
   const [isReservationModalOpen, setIsReservationModalOpen] = useState(false);
   const [reservationLocation, setReservationLocation] = useState('');
+  const [reservationDate, setReservationDate] = useState('');
+  const [reservationHour, setReservationHour] = useState('');
+  const [reservationMinute, setReservationMinute] = useState('');
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [isCallModalOpen, setIsCallModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -46,6 +49,85 @@ export default function App() {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  const now = new Date();
+  const todayStr = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+
+  const getSelectedDate = (dateStr: string) => {
+    if (!dateStr) return null;
+    const [year, month, day] = dateStr.split('-').map(Number);
+    return new Date(year, month - 1, day);
+  };
+
+  const getAvailableHours = () => {
+    if (!reservationDate) return [];
+    
+    const selectedDateObj = getSelectedDate(reservationDate);
+    if (!selectedDateObj) return [];
+    
+    const isSunday = selectedDateObj.getDay() === 0;
+    
+    const isToday =
+      selectedDateObj.getDate() === now.getDate() &&
+      selectedDateObj.getMonth() === now.getMonth() &&
+      selectedDateObj.getFullYear() === now.getFullYear();
+
+    const startHour = isSunday ? 11 : 10;
+    const endHour = isSunday ? 21 : 22;
+
+    const currentHour = now.getHours();
+    
+    const options = [];
+    for (let h = startHour; h <= endHour; h++) {
+      if (isToday) {
+        if (h < currentHour) continue;
+        if (h === currentHour) {
+           // Skip if there are no valid minutes left in this hour
+           const isLastHour = h === endHour;
+           const maxValidMinute = isLastHour ? 30 : 45;
+           if (now.getMinutes() >= maxValidMinute) {
+             continue;
+           }
+        }
+      }
+      options.push(h.toString().padStart(2, '0'));
+    }
+    return options;
+  };
+
+  const getAvailableMinutes = (hourStr: string) => {
+    if (!hourStr || !reservationDate) return [];
+    
+    const selectedDateObj = getSelectedDate(reservationDate);
+    if (!selectedDateObj) return [];
+
+    const isSunday = selectedDateObj.getDay() === 0;
+    
+    const isToday =
+      selectedDateObj.getDate() === now.getDate() &&
+      selectedDateObj.getMonth() === now.getMonth() &&
+      selectedDateObj.getFullYear() === now.getFullYear();
+
+    const endHour = isSunday ? 21 : 22;
+    const h = parseInt(hourStr, 10);
+
+    const minutes = ["00", "15", "30", "45"];
+    let filteredMinutes = minutes;
+
+    if (h === endHour) {
+      filteredMinutes = ["00", "15", "30"]; // Last reservation half an hour before close
+    }
+
+    if (isToday && h === now.getHours()) {
+      const currentMinute = now.getMinutes();
+      filteredMinutes = filteredMinutes.filter(m => parseInt(m, 10) > currentMinute);
+    }
+    
+    return filteredMinutes;
+  };
+
+  const availableHours = getAvailableHours();
+  const availableMinutes = getAvailableMinutes(reservationHour);
 
   return (
     <>
@@ -1160,7 +1242,9 @@ export default function App() {
                   const name = formData.get('name');
                   const phone = formData.get('phone');
                   const date = formData.get('date');
-                  const time = formData.get('time');
+                  const hour = formData.get('hour');
+                  const minute = formData.get('minute');
+                  const time = `${hour}:${minute}`;
                   const guests = formData.get('guests');
                   const comments = formData.get('comments');
                   
@@ -1249,6 +1333,13 @@ export default function App() {
                       id="date"
                       name="date"
                       required
+                      min={todayStr}
+                      value={reservationDate}
+                      onChange={(e) => {
+                        setReservationDate(e.target.value);
+                        setReservationHour('');
+                        setReservationMinute('');
+                      }}
                       className="w-full bg-neutral-950/50 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-amber-500/50 transition-colors [color-scheme:dark]"
                     />
                   </div>
@@ -1256,13 +1347,36 @@ export default function App() {
                     <label htmlFor="time" className="block text-sm font-medium text-neutral-400 mb-1">
                       {t.reservationForm.time}
                     </label>
-                    <input
-                      type="time"
-                      id="time"
-                      name="time"
-                      required
-                      className="w-full bg-neutral-950/50 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-amber-500/50 transition-colors [color-scheme:dark]"
-                    />
+                    <div className="flex gap-2 items-center">
+                      <select
+                        name="hour"
+                        required
+                        value={reservationHour}
+                        onChange={(e) => {
+                          setReservationHour(e.target.value);
+                          setReservationMinute(''); // Reset minute when hour changes to ensure validation
+                        }}
+                        className="flex-1 bg-neutral-950/50 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-amber-500/50 transition-colors appearance-none"
+                      >
+                        <option value="" disabled>--</option>
+                        {availableHours.map((h) => (
+                          <option key={h} value={h}>{h}</option>
+                        ))}
+                      </select>
+                      <span className="text-white font-bold">:</span>
+                      <select
+                        name="minute"
+                        required
+                        value={reservationMinute}
+                        onChange={(e) => setReservationMinute(e.target.value)}
+                        className="flex-1 bg-neutral-950/50 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-amber-500/50 transition-colors appearance-none"
+                      >
+                        <option value="" disabled>--</option>
+                        {availableMinutes.map((m) => (
+                          <option key={m} value={m}>{m}</option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
                 </div>
 
