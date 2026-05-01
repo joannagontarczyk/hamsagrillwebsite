@@ -752,7 +752,7 @@ export default function App() {
                           <p className="text-neutral-400 leading-relaxed">
                             {t.order.ochotaAddress.split(',')[0]}<br />
                             {t.order.ochotaAddress.split(',')[1].trim()}<br />
-                            Poland
+                            {t.order.country}
                           </p>
                           <a 
                             href="https://maps.app.goo.gl/WEbA3kEZM2SJbvtp9" 
@@ -791,7 +791,7 @@ export default function App() {
                       <div className="bg-neutral-950 rounded-[22px] p-6 lg:p-8 flex flex-col gap-6 items-center text-center">
                         <div className="flex flex-col gap-2">
                           <h4 className="text-white font-serif text-2xl font-bold">{t.location.readyToOrder}</h4>
-                          <p className="text-neutral-400 text-sm">Ochota - Grójecka 20C, 02-301 Warsaw</p>
+                          <p className="text-neutral-400 text-sm">{t.order.ochota} - {t.order.ochotaAddress}</p>
                         </div>
                         <div className="flex w-full flex-col sm:flex-row gap-4">
                           <a href="https://hamsagrillrestaurant.goorder.pl/" target="_blank" rel="noopener noreferrer" className="flex-1 bg-amber-500 text-neutral-950 py-4 px-4 rounded-2xl font-bold flex items-center justify-center hover:bg-amber-400 transition-colors text-sm text-center">
@@ -826,7 +826,7 @@ export default function App() {
                           <p className="text-neutral-400 leading-relaxed">
                             {t.order.mokotowAddress.split(',')[0]}<br />
                             {t.order.mokotowAddress.split(',')[1].trim()}<br />
-                            Poland
+                            {t.order.country}
                           </p>
                           <a 
                             href="https://maps.app.goo.gl/WWu88f5Caz8WtwfCA" 
@@ -865,7 +865,7 @@ export default function App() {
                       <div className="bg-neutral-950 rounded-[22px] p-6 lg:p-8 flex flex-col gap-6 items-center text-center">
                         <div className="flex flex-col gap-2">
                           <h4 className="text-white font-serif text-2xl font-bold">{t.location.readyToOrder}</h4>
-                          <p className="text-neutral-400 text-sm">Mokotów - Garażowa 7 lok. U5, 02-651 Warsaw</p>
+                          <p className="text-neutral-400 text-sm">{t.order.mokotow} - {t.order.mokotowAddress}</p>
                         </div>
                         <div className="flex w-full flex-col sm:flex-row gap-4">
                           <a href="https://www.hamsagrill.pl/restauracja/hamsa-grill" target="_blank" rel="noopener noreferrer" className="flex-1 bg-amber-500 text-neutral-950 py-4 px-4 rounded-2xl font-bold flex items-center justify-center hover:bg-amber-400 transition-colors text-sm text-center">
