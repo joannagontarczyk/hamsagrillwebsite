@@ -1311,7 +1311,7 @@ export default function App() {
                   </div>
                   <div className="min-w-0">
                     <label htmlFor="guests" className="block text-sm font-medium text-neutral-400 mb-1 truncate">
-                      {t.reservationForm.guests}
+                      {t.reservationForm.guests}*
                     </label>
                     <input
                       type="number"
@@ -1386,12 +1386,15 @@ export default function App() {
                   <textarea
                     id="comments"
                     name="comments"
-                    rows={3}
+                    rows={2}
                     className="w-full bg-neutral-950/50 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-amber-500/50 transition-colors resize-none"
                   />
+                  <p className="text-[11px] sm:text-xs text-neutral-400 mt-2">
+                    {t.reservationForm.serviceChargeNote}
+                  </p>
                 </div>
 
-                <div className="pt-4 flex gap-3">
+                <div className="pt-2 flex gap-3">
                   <button
                     type="button"
                     onClick={() => setIsReservationModalOpen(false)}
