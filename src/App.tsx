@@ -542,8 +542,8 @@ export default function App() {
                   <Utensils className="h-5 w-5 md:h-6 md:w-6 text-amber-400" />
                 </div>
                 <div>
-                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-white mb-3 md:mb-4">{t.services.meatTitle}</h3>
-                  <p className="text-neutral-300 text-base md:text-lg max-w-md leading-relaxed">
+                  <h3 className="text-xl lg:text-4xl font-serif font-bold text-white mb-2 lg:mb-4">{t.services.meatTitle}</h3>
+                  <p className="text-neutral-300 text-sm lg:text-lg max-w-md leading-relaxed">
                     {t.services.meatDesc}
                   </p>
                 </div>
@@ -571,8 +571,8 @@ export default function App() {
                     <ChefHat className="h-5 w-5 text-amber-400" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-serif font-bold text-white mb-3">{t.services.kebabTitle}</h3>
-                    <p className="text-neutral-300">
+                    <h3 className="text-xl lg:text-2xl font-serif font-bold text-white mb-2 lg:mb-3">{t.services.kebabTitle}</h3>
+                    <p className="text-neutral-300 text-sm lg:text-base">
                       {t.services.kebabDesc}
                     </p>
                   </div>
@@ -599,8 +599,8 @@ export default function App() {
                     <Star className="h-5 w-5 text-orange-400" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-serif font-bold text-white mb-3">{t.services.falafelTitle}</h3>
-                    <p className="text-neutral-300">
+                    <h3 className="text-xl lg:text-2xl font-serif font-bold text-white mb-2 lg:mb-3">{t.services.falafelTitle}</h3>
+                    <p className="text-neutral-300 text-sm lg:text-base">
                       {t.services.falafelDesc}
                     </p>
                   </div>
@@ -857,11 +857,11 @@ export default function App() {
                           <div className="flex flex-col text-neutral-400 gap-4 sm:gap-2">
                             <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
                               <span>{t.location.monSat}</span>
-                              <span className="text-white font-medium">10:00 AM – 11:00 PM</span>
+                              <span className="text-white font-medium">{t.location.monSatHours}</span>
                             </div>
                             <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
                               <span>{t.location.sunday}</span>
-                              <span className="text-white font-medium">11:00 AM – 10:00 PM</span>
+                              <span className="text-white font-medium">{t.location.sundayHours}</span>
                             </div>
                           </div>
                         </div>
@@ -931,11 +931,11 @@ export default function App() {
                           <div className="flex flex-col text-neutral-400 gap-4 sm:gap-2">
                             <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
                               <span>{t.location.monSat}</span>
-                              <span className="text-white font-medium">10:00 AM – 11:00 PM</span>
+                              <span className="text-white font-medium">{t.location.monSatHours}</span>
                             </div>
                             <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
                               <span>{t.location.sunday}</span>
-                              <span className="text-white font-medium">11:00 AM – 10:00 PM</span>
+                              <span className="text-white font-medium">{t.location.sundayHours}</span>
                             </div>
                           </div>
                         </div>
