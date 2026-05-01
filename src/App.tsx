@@ -286,7 +286,7 @@ export default function App() {
                 href="https://www.instagram.com/hamsagrillwarsaw/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-orange-500 hover:text-orange-400 transition-colors ml-2"
+                className="text-orange-500 hover:text-orange-400 transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="h-[38px] w-[38px] xl:h-[42px] xl:w-[42px]" />
