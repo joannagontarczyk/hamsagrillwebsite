@@ -22,7 +22,12 @@ const scaleIn = {
 };
 
 export default function App() {
-  const [lang, setLang] = useState<'en' | 'pl'>('en');
+  const [lang, setLang] = useState<'en' | 'pl'>(() => {
+    if (typeof navigator !== 'undefined' && navigator.language.startsWith('pl')) {
+      return 'pl';
+    }
+    return 'en';
+  });
   const [isReservationModalOpen, setIsReservationModalOpen] = useState(false);
   const [reservationLocation, setReservationLocation] = useState('');
   const [reservationDate, setReservationDate] = useState('');
