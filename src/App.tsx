@@ -1294,9 +1294,9 @@ export default function App() {
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-neutral-400 mb-1">
+                <div className="grid grid-cols-[3fr_2fr] sm:grid-cols-2 gap-4">
+                  <div className="min-w-0">
+                    <label htmlFor="phone" className="block text-sm font-medium text-neutral-400 mb-1 truncate">
                       {t.reservationForm.phone}
                     </label>
                     <input
@@ -1304,11 +1304,13 @@ export default function App() {
                       id="phone"
                       name="phone"
                       required
+                      pattern="[\+]{0,1}[0-9\s\-]{9,15}"
+                      title={lang === 'pl' ? "Wprowadź poprawny numer telefonu (np. +48 123 456 789)" : "Please enter a valid phone number (e.g., +48 123 456 789)"}
                       className="w-full bg-neutral-950/50 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-amber-500/50 transition-colors"
                     />
                   </div>
-                  <div>
-                    <label htmlFor="guests" className="block text-sm font-medium text-neutral-400 mb-1">
+                  <div className="min-w-0">
+                    <label htmlFor="guests" className="block text-sm font-medium text-neutral-400 mb-1 truncate">
                       {t.reservationForm.guests}
                     </label>
                     <input
@@ -1321,11 +1323,8 @@ export default function App() {
                       className="w-full bg-neutral-950/50 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-amber-500/50 transition-colors"
                     />
                   </div>
-                </div>
-                
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="date" className="block text-sm font-medium text-neutral-400 mb-1">
+                  <div className="min-w-0">
+                    <label htmlFor="date" className="block text-sm font-medium text-neutral-400 mb-1 truncate">
                       {t.reservationForm.date}
                     </label>
                     <input
@@ -1340,14 +1339,14 @@ export default function App() {
                         setReservationHour('');
                         setReservationMinute('');
                       }}
-                      className="w-full bg-neutral-950/50 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-amber-500/50 transition-colors [color-scheme:dark]"
+                      className="w-full min-w-0 bg-neutral-950/50 border border-white/10 rounded-xl px-2 sm:px-4 py-2 text-white focus:outline-none focus:border-amber-500/50 transition-colors [color-scheme:dark]"
                     />
                   </div>
-                  <div>
-                    <label htmlFor="time" className="block text-sm font-medium text-neutral-400 mb-1">
+                  <div className="min-w-0">
+                    <label htmlFor="time" className="block text-sm font-medium text-neutral-400 mb-1 truncate">
                       {t.reservationForm.time}
                     </label>
-                    <div className="flex gap-2 items-center">
+                    <div className="flex gap-1 sm:gap-2 items-center min-w-0">
                       <select
                         name="hour"
                         required
@@ -1356,20 +1355,20 @@ export default function App() {
                           setReservationHour(e.target.value);
                           setReservationMinute(''); // Reset minute when hour changes to ensure validation
                         }}
-                        className="flex-1 bg-neutral-950/50 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-amber-500/50 transition-colors appearance-none"
+                        className="flex-1 min-w-0 bg-neutral-950/50 border border-white/10 rounded-xl px-2 sm:px-4 py-2 text-sm sm:text-base text-white focus:outline-none focus:border-amber-500/50 transition-colors appearance-none"
                       >
                         <option value="" disabled>--</option>
                         {availableHours.map((h) => (
                           <option key={h} value={h}>{h}</option>
                         ))}
                       </select>
-                      <span className="text-white font-bold">:</span>
+                      <span className="text-white font-bold flex-shrink-0">:</span>
                       <select
                         name="minute"
                         required
                         value={reservationMinute}
                         onChange={(e) => setReservationMinute(e.target.value)}
-                        className="flex-1 bg-neutral-950/50 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-amber-500/50 transition-colors appearance-none"
+                        className="flex-1 min-w-0 bg-neutral-950/50 border border-white/10 rounded-xl px-2 sm:px-4 py-2 text-sm sm:text-base text-white focus:outline-none focus:border-amber-500/50 transition-colors appearance-none"
                       >
                         <option value="" disabled>--</option>
                         {availableMinutes.map((m) => (
