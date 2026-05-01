@@ -748,14 +748,14 @@ export default function App() {
                           <MapPin className="h-5 w-5" />
                         </div>
                         <div>
-                          <h4 className="text-white font-medium text-lg mb-2">Hamsa Grill - {t.order.ochota}</h4>
+                          <h4 className="text-white font-medium text-lg mb-2">Hamsa Grill Restaurant - {t.order.ochota}</h4>
                           <p className="text-neutral-400 leading-relaxed">
                             {t.order.ochotaAddress.split(',')[0]}<br />
                             {t.order.ochotaAddress.split(',')[1].trim()}<br />
                             Poland
                           </p>
                           <a 
-                            href="https://www.google.com/maps/place/Hamsa+Grill+Restaurant/@52.2219958,20.9830363,461m/data=!3m2!1e3!4b1!4m6!3m5!1s0x471ecd70781e3263:0x89bf0ecabf3fc8af!8m2!3d52.2219925!4d20.9856112!16s%2Fg%2F11yh85tzrj?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D" 
+                            href="https://maps.app.goo.gl/WEbA3kEZM2SJbvtp9" 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 text-amber-500 mt-3 text-sm font-medium hover:text-amber-400 transition-colors"
@@ -791,7 +791,7 @@ export default function App() {
                       <div className="bg-neutral-950 rounded-[22px] p-6 lg:p-8 flex flex-col gap-6 items-center text-center">
                         <div className="flex flex-col gap-2">
                           <h4 className="text-white font-serif text-2xl font-bold">{t.location.readyToOrder}</h4>
-                          <p className="text-neutral-400 text-sm">Ochota - Grójecka 20C, 02-301 Warszawa</p>
+                          <p className="text-neutral-400 text-sm">Ochota - Grójecka 20C, 02-301 Warsaw</p>
                         </div>
                         <div className="flex w-full flex-col sm:flex-row gap-4">
                           <a href="https://hamsagrillrestaurant.goorder.pl/" target="_blank" rel="noopener noreferrer" className="flex-1 bg-amber-500 text-neutral-950 py-4 px-4 rounded-2xl font-bold flex items-center justify-center hover:bg-amber-400 transition-colors text-sm text-center">
@@ -865,7 +865,7 @@ export default function App() {
                       <div className="bg-neutral-950 rounded-[22px] p-6 lg:p-8 flex flex-col gap-6 items-center text-center">
                         <div className="flex flex-col gap-2">
                           <h4 className="text-white font-serif text-2xl font-bold">{t.location.readyToOrder}</h4>
-                          <p className="text-neutral-400 text-sm">Mokotów - Garażowa 7 lok. U5, 02-651 Warszawa</p>
+                          <p className="text-neutral-400 text-sm">Mokotów - Garażowa 7 lok. U5, 02-651 Warsaw</p>
                         </div>
                         <div className="flex w-full flex-col sm:flex-row gap-4">
                           <a href="https://www.hamsagrill.pl/restauracja/hamsa-grill" target="_blank" rel="noopener noreferrer" className="flex-1 bg-amber-500 text-neutral-950 py-4 px-4 rounded-2xl font-bold flex items-center justify-center hover:bg-amber-400 transition-colors text-sm text-center">
@@ -1027,7 +1027,11 @@ export default function App() {
                     <MapPin className="h-6 w-6 text-amber-400" />
                   </div>
                   <h4 className="text-xl font-serif font-bold text-white mb-2">{t.order.ochota}</h4>
-                  <p className="text-neutral-400 text-xs mb-6 px-4">{t.order.ochotaAddress}</p>
+                  <p className="text-neutral-400 text-xs mb-6 px-4">
+                    {t.order.ochotaAddress.split(',')[0]}<br />
+                    {t.order.ochotaAddress.split(',')[1].trim()}<br />
+                    <span className="block mt-1 text-neutral-500">(pick-up, dine in)</span>
+                  </p>
                   <a href="https://hamsagrillrestaurant.goorder.pl/" target="_blank" rel="noopener noreferrer" className="w-full mt-auto py-3 rounded-full font-medium text-white border border-amber-500/50 hover:bg-amber-500 hover:text-neutral-950 transition-all text-sm flex items-center justify-center gap-2">
                     {t.order.orderOnline} <ArrowRight className="h-4 w-4" />
                   </a>
@@ -1038,7 +1042,11 @@ export default function App() {
                     <MapPin className="h-6 w-6 text-orange-400" />
                   </div>
                   <h4 className="text-xl font-serif font-bold text-white mb-2">{t.order.mokotow}</h4>
-                  <p className="text-neutral-400 text-xs mb-6 px-4">{t.order.mokotowAddress}</p>
+                  <p className="text-neutral-400 text-xs mb-6 px-4">
+                    {t.order.mokotowAddress.split(',')[0]}<br />
+                    {t.order.mokotowAddress.split(',')[1].trim()}<br />
+                    <span className="block mt-1 text-neutral-500">(pick-up, delivery)</span>
+                  </p>
                   <a href="https://www.hamsagrill.pl/restauracja/hamsa-grill" target="_blank" rel="noopener noreferrer" className="w-full mt-auto py-3 rounded-full font-medium text-white border border-orange-500/50 hover:bg-orange-500 hover:text-neutral-950 transition-all text-sm flex items-center justify-center gap-2">
                     {t.order.orderOnline} <ArrowRight className="h-4 w-4" />
                   </a>
@@ -1084,7 +1092,11 @@ export default function App() {
                     <MapPin className="h-6 w-6 text-amber-400" />
                   </div>
                   <h4 className="text-xl font-serif font-bold text-white mb-2">{t.order.ochota}</h4>
-                  <p className="text-neutral-400 text-xs mb-6 px-4">{t.order.ochotaAddress}</p>
+                  <p className="text-neutral-400 text-xs mb-6 px-4">
+                    {t.order.ochotaAddress.split(',')[0]}<br />
+                    {t.order.ochotaAddress.split(',')[1].trim()}<br />
+                    <span className="block mt-1 text-neutral-500">(pick-up, dine in)</span>
+                  </p>
                   <a href="tel:+48570706701" className="w-full mt-auto py-3 rounded-full font-bold text-neutral-950 bg-white hover:bg-neutral-100 transition-all text-sm flex flex-col items-center justify-center">
                     <span>{t.order.callNow}</span>
                     <span className="text-xs font-medium text-neutral-600 mt-0.5">+48 570 706 701</span>
@@ -1096,7 +1108,11 @@ export default function App() {
                     <MapPin className="h-6 w-6 text-orange-400" />
                   </div>
                   <h4 className="text-xl font-serif font-bold text-white mb-2">{t.order.mokotow}</h4>
-                  <p className="text-neutral-400 text-xs mb-6 px-4">{t.order.mokotowAddress}</p>
+                  <p className="text-neutral-400 text-xs mb-6 px-4">
+                    {t.order.mokotowAddress.split(',')[0]}<br />
+                    {t.order.mokotowAddress.split(',')[1].trim()}<br />
+                    <span className="block mt-1 text-neutral-500">(pick-up, delivery)</span>
+                  </p>
                   <a href="tel:+48224156789" className="w-full mt-auto py-3 rounded-full font-bold text-neutral-950 bg-white hover:bg-neutral-100 transition-all text-sm flex flex-col items-center justify-center">
                     <span>{t.order.callNow}</span>
                     <span className="text-xs font-medium text-neutral-600 mt-0.5">+48 22 41 56789</span>
