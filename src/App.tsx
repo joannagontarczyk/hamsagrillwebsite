@@ -148,28 +148,26 @@ export default function App() {
             className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/40 backdrop-blur-sm pointer-events-none"
           >
             <motion.img 
-              initial={{ scale: 0.8, opacity: 0, filter: "blur(0px) brightness(1) sepia(0)" }}
-              animate={{ scale: 1, opacity: 1, filter: "blur(0px) brightness(1) sepia(0)" }}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
               exit={{ 
-                scale: 1.15, 
+                scale: 1.1, 
                 opacity: 0, 
-                x: "10vw", 
-                y: "-10vh",
-                rotate: 10, 
-                filter: "blur(40px) brightness(3) sepia(1) hue-rotate(-15deg) drop-shadow(0 0 100px rgba(245,158,11,1))",
-                transition: { duration: 2.2, ease: "easeInOut" }
+                filter: "brightness(2) blur(10px)",
+                transition: { duration: 1.2, ease: "easeOut" }
               }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
+              transition={{ duration: 1.0, ease: "easeInOut" }}
               src={getAssetUrl("hamsa_alone.png")}
               alt="Hamsa Grill Logo" 
-              className="w-[80vw] h-[80vh] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.7)] drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] z-10 relative"
+              className="w-[80vw] h-[80vh] max-w-[500px] max-h-[500px] object-contain z-10 relative will-change-transform opacity-0"
+              style={{ filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.5))" }}
             />
-            {/* Golden Stardust Wave */}
-            {Array.from({ length: 400 }).map((_, i) => {
+            {/* Golden Stardust Wave - Optimized with fewer particles */}
+            {Array.from({ length: 80 }).map((_, i) => {
               const startX = (Math.random() - 0.5) * 60; // -30vw to 30vw
               const startY = (Math.random() - 0.5) * 60; // -30vh to 30vh
               const isSparkle = Math.random() > 0.85;
-              const size = Math.random() * (isSparkle ? 3 : 6) + 2;
+              const size = Math.random() * (isSparkle ? 3 : 5) + 2;
               
               // Wave delay from left bottom to right top
               const distanceDelay = ((startX + 30) / 60) * 0.4 + ((30 - startY) / 60) * 0.4;
@@ -179,28 +177,27 @@ export default function App() {
                   key={i}
                   initial={{ opacity: 0, x: `${startX}vw`, y: `${startY}vh` }}
                   exit={{
-                    opacity: [0, 1, 0.8, 0],
+                    opacity: [0, 1, 0],
                     x: [
                       `${startX}vw`, 
-                      `${startX + (Math.random() * 50 + 20)}vw`
+                      `${startX + (Math.random() * 40 + 20)}vw`
                     ],
                     y: [
                       `${startY}vh`, 
-                      `${startY - (Math.random() * 50 + 20)}vh`
+                      `${startY - (Math.random() * 40 + 20)}vh`
                     ],
                     scale: [0, Math.random() * 1.5 + 0.5, 0],
-                    rotate: [0, Math.random() * 360, Math.random() * 720],
                     transition: { 
-                      duration: 2 + Math.random() * 1.5, 
+                      duration: 1.5 + Math.random() * 1.0, 
                       ease: "easeOut",
-                      delay: distanceDelay + Math.random() * 0.3
+                      delay: distanceDelay + Math.random() * 0.2
                     }
                   }}
-                  className={`absolute rounded-full z-20 pointer-events-none ${isSparkle ? 'bg-white' : 'bg-gradient-to-tr from-amber-100 via-amber-400 to-amber-600'}`}
+                  className={`absolute rounded-full z-20 pointer-events-none will-change-transform ${isSparkle ? 'bg-white' : 'bg-amber-400'}`}
                   style={{
                     width: `${size}px`,
                     height: `${size}px`,
-                    boxShadow: isSparkle ? "0 0 20px 3px rgba(255, 255, 255, 0.9)" : "0 0 25px 4px rgba(245, 158, 11, 0.8)"
+                    boxShadow: isSparkle ? "0 0 10px 2px rgba(255, 255, 255, 0.8)" : "none"
                   }}
                 />
               );
