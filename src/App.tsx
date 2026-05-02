@@ -682,7 +682,7 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-amber-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src="Pide z salami.jpg" 
+                src="public/Pide z salami.jpg" 
                 alt="Pide (Turkish Pizza)" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
