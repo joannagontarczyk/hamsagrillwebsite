@@ -25,9 +25,7 @@ jobs:
       - name: Install dependencies
         run: npm install --no-package-lock
       - name: Build
-        run: |
-          npm run build
-          cp -r public/* dist/ || true
+        run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
