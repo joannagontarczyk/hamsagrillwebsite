@@ -160,7 +160,7 @@ export default function App() {
                 transition: { duration: 2.2, ease: "easeInOut" }
               }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-              src="assets/hamsa_alone.png"
+              src={getAssetUrl("hamsa_alone.png")}
               alt="Hamsa Grill Logo" 
               className="w-[80vw] h-[80vh] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.7)] drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] z-10 relative"
             />
@@ -234,7 +234,7 @@ export default function App() {
               className="flex items-center group cursor-pointer flex-shrink-0"
             >
               <div className="h-14 md:h-16 flex items-center justify-center transition-all duration-500">
-                <img src="./assets/hamsa_logo_horizontal.png" alt="Hamsa Grill Logo" className="h-full w-auto object-contain" />
+                <img src={getAssetUrl("hamsa_logo_horizontal.png")} alt="Hamsa Grill Logo" className="h-full w-auto object-contain" />
               </div>
             </a>
             <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
