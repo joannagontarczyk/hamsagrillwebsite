@@ -14,10 +14,10 @@ import hummus from './assets/hummus.jpg';
 import pide_z_salami from './assets/pide_z_salami.jpg';
 import baklawa_czekoladowa from './assets/baklawa_czekoladowa.jpg';
 
-const spaceImagesObj = import.meta.glob('./assets/space_*.jpg', { eager: true, as: 'url' });
+const spaceImagesObj = import.meta.glob('./assets/space_*.jpg', { eager: true, query: '?url', import: 'default' });
 const spaceImagesList = Object.values(spaceImagesObj) as string[];
 
-const galleryImagesObj = import.meta.glob('./assets/gallery_*.jpg', { eager: true, as: 'url' });
+const galleryImagesObj = import.meta.glob('./assets/gallery_*.jpg', { eager: true, query: '?url', import: 'default' });
 const galleryImagesList = Object.values(galleryImagesObj) as string[];
 
 const staggerContainer = {
