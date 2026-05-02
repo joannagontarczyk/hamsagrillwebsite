@@ -3,22 +3,19 @@ import React, { useState, useEffect } from 'react';
 import { MapPin, Phone, Clock, Utensils, ChefHat, Star, ArrowRight, Menu, Flame, Globe, Instagram, Calendar, Coffee, Salad, Pizza, Cake, X, ChevronLeft, ChevronRight, Mail } from 'lucide-react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { translations } from './translations';
-import hamsa_alone from './assets/hamsa_alone.png';
-import background from './assets/background.png';
-import hamsa_logo_horizontal from './assets/hamsa_logo_horizontal.png';
-import zeberka_jagniece from './assets/zeberka_jagniece.jpg';
-import kanapka_kebab from './assets/kanapka_kebab.jpg';
-import authentic_falafel from './assets/authentic_falafel.jpg';
-import shakshuka from './assets/shakshuka.jpg';
-import hummus from './assets/hummus.jpg';
-import pide_z_salami from './assets/pide_z_salami.jpg';
-import baklawa_czekoladowa from './assets/baklawa_czekoladowa.jpg';
+const hamsa_alone = "/assets/hamsa_alone.png";
+const background = "/assets/background.png";
+const hamsa_logo_horizontal = "/assets/hamsa_logo_horizontal.png";
+const zeberka_jagniece = "/assets/zeberka_jagniece.jpg";
+const kanapka_kebab = "/assets/kanapka_kebab.jpg";
+const authentic_falafel = "/assets/authentic_falafel.jpg";
+const shakshuka = "/assets/shakshuka.jpg";
+const hummus = "/assets/hummus.jpg";
+const pide_z_salami = "/assets/pide_z_salami.jpg";
+const baklawa_czekoladowa = "/assets/baklawa_czekoladowa.jpg";
 
-const spaceImagesObj = import.meta.glob('./assets/space_*.jpg', { eager: true, query: '?url', import: 'default' });
-const spaceImagesList = Object.values(spaceImagesObj) as string[];
-
-const galleryImagesObj = import.meta.glob('./assets/gallery_*.jpg', { eager: true, query: '?url', import: 'default' });
-const galleryImagesList = Object.values(galleryImagesObj) as string[];
+const spaceImagesList = Array.from({ length: 7 }, (_, i) => `/assets/space_${i + 1}.jpg`);
+const galleryImagesList = Array.from({ length: 12 }, (_, i) => `/assets/gallery_${i + 1}.jpg`);
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -612,7 +609,6 @@ export default function App() {
                   src={authentic_falafel} 
                   alt="Authentic Falafel" 
                   className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-colors duration-500" />
@@ -644,7 +640,6 @@ export default function App() {
                 src={shakshuka} 
                 alt="Traditional Breakfast" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
               <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl group-hover:bg-amber-500/20 transition-colors duration-500" />
@@ -673,7 +668,6 @@ export default function App() {
                 src={hummus} 
                 alt="Meze & Appetizers" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
               <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-colors duration-500" />
@@ -702,7 +696,6 @@ export default function App() {
                 src={pide_z_salami} 
                 alt="Pide (Turkish Pizza)" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
               <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl group-hover:bg-amber-500/20 transition-colors duration-500" />
@@ -731,7 +724,6 @@ export default function App() {
                 src={baklawa_czekoladowa} 
                 alt="Sweet Desserts" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
               <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-colors duration-500" />
@@ -791,7 +783,6 @@ export default function App() {
                   src={src} 
                   alt={`Gallery image ${idx + 1}`} 
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
-                  referrerPolicy="no-referrer"
                 />
               </motion.div>
             ))}
