@@ -209,7 +209,7 @@ export default function App() {
 
       <div 
         className="relative bg-neutral-950 min-h-screen font-sans text-neutral-200 selection:bg-amber-500/30 selection:text-amber-200 bg-cover bg-center bg-fixed"
-      style={{ backgroundImage: 'url("/Background.png")' }}
+      style={{ backgroundImage: 'url("Background.png")' }}
     >
       {/* Ambient Background Glows */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
@@ -232,7 +232,7 @@ export default function App() {
               className="flex items-center group cursor-pointer flex-shrink-0"
             >
               <div className="h-14 md:h-16 flex items-center justify-center transition-all duration-500">
-                <img src={`${import.meta.env.BASE_URL}Hamsa_logo_horizontal.png`}" alt="Hamsa Grill Logo" className="h-full w-auto object-contain" />
+                <img src="Hamsa_logo_horizontal.png" alt="Hamsa Grill Logo" className="h-full w-auto object-contain" />
               </div>
             </a>
             <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
@@ -682,7 +682,7 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-amber-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src="public/Pide z salami.jpg" 
+                src="Pide z salami.jpg" 
                 alt="Pide (Turkish Pizza)" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
