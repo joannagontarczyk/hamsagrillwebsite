@@ -900,6 +900,7 @@ export default function App() {
                         <div className="flex flex-col gap-2">
                           <h4 className="text-white font-serif text-2xl font-bold">{t.location.readyToOrder}</h4>
                           <p className="text-neutral-400 text-sm">{t.order.ochota} - {t.order.ochotaAddress}</p>
+                          <p className="text-amber-500/80 text-sm font-medium -mt-1">{t.order.ochotaOptions}</p>
                         </div>
                         <div className="flex w-full flex-col sm:flex-row gap-4">
                           <a href="https://hamsagrillrestaurant.goorder.pl/" target="_blank" rel="noopener noreferrer" className="flex-1 bg-amber-500 text-neutral-950 py-4 px-4 rounded-2xl font-bold flex items-center justify-center hover:bg-amber-400 transition-colors text-sm text-center">
@@ -993,6 +994,7 @@ export default function App() {
                         <div className="flex flex-col gap-2">
                           <h4 className="text-white font-serif text-2xl font-bold">{t.location.readyToOrder}</h4>
                           <p className="text-neutral-400 text-sm">{t.order.mokotow} - {t.order.mokotowAddress}</p>
+                          <p className="text-amber-500/80 text-sm font-medium -mt-1">{t.order.mokotowOptions}</p>
                         </div>
                         <div className="flex w-full flex-col sm:flex-row gap-4">
                           <a href="https://www.hamsagrill.pl/restauracja/hamsa-grill" target="_blank" rel="noopener noreferrer" className="flex-1 bg-amber-500 text-neutral-950 py-4 px-4 rounded-2xl font-bold flex items-center justify-center hover:bg-amber-400 transition-colors text-sm text-center">
