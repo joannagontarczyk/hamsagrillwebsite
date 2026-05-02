@@ -160,7 +160,7 @@ export default function App() {
                 transition: { duration: 2.2, ease: "easeInOut" }
               }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-              src="assets/hamsa_alone.png" 
+              src="assets/hamsa_alone.png"
               alt="Hamsa Grill Logo" 
               className="w-[80vw] h-[80vh] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.7)] drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] z-10 relative"
             />
