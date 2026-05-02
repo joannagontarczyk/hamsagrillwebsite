@@ -160,7 +160,7 @@ export default function App() {
                 transition: { duration: 2.2, ease: "easeInOut" }
               }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-              src={getAssetUrl("Hamsa_alone.png")} 
+              src={getAssetUrl("hamsa_alone.png")} 
               alt="Hamsa Grill Logo" 
               className="w-[80vw] h-[80vh] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.7)] drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] z-10 relative"
             />
@@ -211,7 +211,7 @@ export default function App() {
 
       <div 
         className="relative bg-neutral-950 min-h-screen font-sans text-neutral-200 selection:bg-amber-500/30 selection:text-amber-200 bg-cover bg-center bg-fixed"
-      style={{ backgroundImage: `url("${getAssetUrl("Background.png")}")` }}
+      style={{ backgroundImage: `url("${getAssetUrl("background.png")}")` }}
     >
       {/* Ambient Background Glows */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
@@ -234,7 +234,7 @@ export default function App() {
               className="flex items-center group cursor-pointer flex-shrink-0"
             >
               <div className="h-14 md:h-16 flex items-center justify-center transition-all duration-500">
-                <img src={getAssetUrl("Hamsa_logo_horizontal.png")} alt="Hamsa Grill Logo" className="h-full w-auto object-contain" />
+                <img src={getAssetUrl("hamsa_logo_horizontal.png")} alt="Hamsa Grill Logo" className="h-full w-auto object-contain" />
               </div>
             </a>
             <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
@@ -539,7 +539,7 @@ export default function App() {
               className="md:col-span-8 group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 min-h-[400px] md:min-h-[500px]"
             >
               <img 
-                src={getAssetUrl("Żeberka jagnięce.jpg")} 
+                src={getAssetUrl("zeberka_jagniece.jpg")} 
                 alt="Premium Grilled Meat" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
               />
@@ -567,7 +567,7 @@ export default function App() {
                 className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 flex-1 min-h-[320px] p-8 hover:border-amber-500/30 transition-colors duration-500"
               >
                 <img 
-                  src={getAssetUrl("Kanapka Kebab.jpg")} 
+                  src={getAssetUrl("kanapka_kebab.jpg")} 
                   alt="Signature Kebab" 
                   className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 />
@@ -594,7 +594,7 @@ export default function App() {
                 className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 flex-1 min-h-[320px] p-8 hover:border-orange-500/30 transition-colors duration-500"
               >
                 <img 
-                  src={getAssetUrl("Authentic Falafel.jpg")} 
+                  src={getAssetUrl("authentic_falafel.jpg")} 
                   alt="Authentic Falafel" 
                   className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                   referrerPolicy="no-referrer"
@@ -626,7 +626,7 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-amber-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src={getAssetUrl("Shakshuka.jpg")} 
+                src={getAssetUrl("shakshuka.jpg")} 
                 alt="Traditional Breakfast" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
@@ -655,7 +655,7 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-orange-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src={getAssetUrl("Hummus.jpg")} 
+                src={getAssetUrl("hummus.jpg")} 
                 alt="Meze & Appetizers" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
@@ -684,7 +684,7 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-amber-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src={getAssetUrl("Pide z salami.jpg")} 
+                src={getAssetUrl("pide_z_salami.jpg")} 
                 alt="Pide (Turkish Pizza)" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
@@ -713,7 +713,7 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-orange-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src={getAssetUrl("Baklawa czekoladowa.jpg")} 
+                src={getAssetUrl("baklawa_czekoladowa.jpg")} 
                 alt="Sweet Desserts" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
