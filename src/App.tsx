@@ -3,19 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { MapPin, Phone, Clock, Utensils, ChefHat, Star, ArrowRight, Menu, Flame, Globe, Instagram, Calendar, Coffee, Salad, Pizza, Cake, X, ChevronLeft, ChevronRight, Mail } from 'lucide-react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { translations } from './translations';
-const hamsa_alone = "/assets/hamsa_alone.png";
-const background = "/assets/background.png";
-const hamsa_logo_horizontal = "/assets/hamsa_logo_horizontal.png";
-const zeberka_jagniece = "/assets/zeberka_jagniece.jpg";
-const kanapka_kebab = "/assets/kanapka_kebab.jpg";
-const authentic_falafel = "/assets/authentic_falafel.jpg";
-const shakshuka = "/assets/shakshuka.jpg";
-const hummus = "/assets/hummus.jpg";
-const pide_z_salami = "/assets/pide_z_salami.jpg";
-const baklawa_czekoladowa = "/assets/baklawa_czekoladowa.jpg";
-
-const spaceImagesList = Array.from({ length: 7 }, (_, i) => `/assets/space_${i + 1}.jpg`);
-const galleryImagesList = Array.from({ length: 12 }, (_, i) => `/assets/gallery_${i + 1}.jpg`);
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -59,7 +46,8 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
   
-  const spaceImages = spaceImagesList;
+  const getAssetUrl = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+  const spaceImages = Array.from({ length: 7 }, (_, i) => getAssetUrl(`space_${i + 1}.jpg`));
   const [currentSpaceImgIndex, setCurrentSpaceImgIndex] = useState(0);
   const [selectedSpaceImg, setSelectedSpaceImg] = useState<string | null>(null);
 
@@ -150,9 +138,80 @@ export default function App() {
 
   return (
     <>
+      <AnimatePresence>
+        {showSplash && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { duration: 1.5, delay: 1.5 } }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/40 backdrop-blur-sm pointer-events-none"
+          >
+            <motion.img 
+              initial={{ scale: 0.8, opacity: 0, filter: "blur(0px) brightness(1) sepia(0)" }}
+              animate={{ scale: 1, opacity: 1, filter: "blur(0px) brightness(1) sepia(0)" }}
+              exit={{ 
+                scale: 1.15, 
+                opacity: 0, 
+                x: "10vw", 
+                y: "-10vh",
+                rotate: 10, 
+                filter: "blur(40px) brightness(3) sepia(1) hue-rotate(-15deg) drop-shadow(0 0 100px rgba(245,158,11,1))",
+                transition: { duration: 2.2, ease: "easeInOut" }
+              }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              src={getAssetUrl("Hamsa_alone.png")} 
+              alt="Hamsa Grill Logo" 
+              className="w-[80vw] h-[80vh] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.7)] drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] z-10 relative"
+            />
+            {/* Golden Stardust Wave */}
+            {Array.from({ length: 400 }).map((_, i) => {
+              const startX = (Math.random() - 0.5) * 60; // -30vw to 30vw
+              const startY = (Math.random() - 0.5) * 60; // -30vh to 30vh
+              const isSparkle = Math.random() > 0.85;
+              const size = Math.random() * (isSparkle ? 3 : 6) + 2;
+              
+              // Wave delay from left bottom to right top
+              const distanceDelay = ((startX + 30) / 60) * 0.4 + ((30 - startY) / 60) * 0.4;
+
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: `${startX}vw`, y: `${startY}vh` }}
+                  exit={{
+                    opacity: [0, 1, 0.8, 0],
+                    x: [
+                      `${startX}vw`, 
+                      `${startX + (Math.random() * 50 + 20)}vw`
+                    ],
+                    y: [
+                      `${startY}vh`, 
+                      `${startY - (Math.random() * 50 + 20)}vh`
+                    ],
+                    scale: [0, Math.random() * 1.5 + 0.5, 0],
+                    rotate: [0, Math.random() * 360, Math.random() * 720],
+                    transition: { 
+                      duration: 2 + Math.random() * 1.5, 
+                      ease: "easeOut",
+                      delay: distanceDelay + Math.random() * 0.3
+                    }
+                  }}
+                  className={`absolute rounded-full z-20 pointer-events-none ${isSparkle ? 'bg-white' : 'bg-gradient-to-tr from-amber-100 via-amber-400 to-amber-600'}`}
+                  style={{
+                    width: `${size}px`,
+                    height: `${size}px`,
+                    boxShadow: isSparkle ? "0 0 20px 3px rgba(255, 255, 255, 0.9)" : "0 0 25px 4px rgba(245, 158, 11, 0.8)"
+                  }}
+                />
+              );
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div 
         className="relative bg-neutral-950 min-h-screen font-sans text-neutral-200 selection:bg-amber-500/30 selection:text-amber-200 bg-cover bg-center bg-fixed"
-      style={{ backgroundImage: `url("${background}")` }}
+      style={{ backgroundImage: `url("${getAssetUrl("Background.png")}")` }}
     >
       {/* Ambient Background Glows */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
@@ -175,7 +234,7 @@ export default function App() {
               className="flex items-center group cursor-pointer flex-shrink-0"
             >
               <div className="h-14 md:h-16 flex items-center justify-center transition-all duration-500">
-                <img src={hamsa_logo_horizontal} alt="Hamsa Grill Logo" className="h-full w-auto object-contain" />
+                <img src={getAssetUrl("Hamsa_logo_horizontal.png")} alt="Hamsa Grill Logo" className="h-full w-auto object-contain" />
               </div>
             </a>
             <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
@@ -480,7 +539,7 @@ export default function App() {
               className="md:col-span-8 group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 min-h-[400px] md:min-h-[500px]"
             >
               <img 
-                src={zeberka_jagniece} 
+                src={getAssetUrl("Żeberka jagnięce.jpg")} 
                 alt="Premium Grilled Meat" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
               />
@@ -508,7 +567,7 @@ export default function App() {
                 className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 flex-1 min-h-[320px] p-8 hover:border-amber-500/30 transition-colors duration-500"
               >
                 <img 
-                  src={kanapka_kebab} 
+                  src={getAssetUrl("Kanapka Kebab.jpg")} 
                   alt="Signature Kebab" 
                   className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 />
@@ -535,9 +594,10 @@ export default function App() {
                 className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 flex-1 min-h-[320px] p-8 hover:border-orange-500/30 transition-colors duration-500"
               >
                 <img 
-                  src={authentic_falafel} 
+                  src={getAssetUrl("Authentic Falafel.jpg")} 
                   alt="Authentic Falafel" 
                   className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-colors duration-500" />
@@ -566,9 +626,10 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-amber-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src={shakshuka} 
+                src={getAssetUrl("Shakshuka.jpg")} 
                 alt="Traditional Breakfast" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
               <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl group-hover:bg-amber-500/20 transition-colors duration-500" />
@@ -594,9 +655,10 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-orange-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src={hummus} 
+                src={getAssetUrl("Hummus.jpg")} 
                 alt="Meze & Appetizers" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
               <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-colors duration-500" />
@@ -622,9 +684,10 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-amber-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src={pide_z_salami} 
+                src={getAssetUrl("Pide z salami.jpg")} 
                 alt="Pide (Turkish Pizza)" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
               <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl group-hover:bg-amber-500/20 transition-colors duration-500" />
@@ -650,9 +713,10 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-orange-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src={baklawa_czekoladowa} 
+                src={getAssetUrl("Baklawa czekoladowa.jpg")} 
                 alt="Sweet Desserts" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
               <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-colors duration-500" />
@@ -699,7 +763,20 @@ export default function App() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {galleryImagesList.map((src, idx) => (
+            {[
+              getAssetUrl("gallery_1.jpg"),
+              getAssetUrl("gallery_2.jpg"),
+              getAssetUrl("gallery_3.jpg"),
+              getAssetUrl("gallery_4.jpg"),
+              getAssetUrl("gallery_5.jpg"),
+              getAssetUrl("gallery_6.jpg"),
+              getAssetUrl("gallery_7.jpg"),
+              getAssetUrl("gallery_8.jpg"),
+              getAssetUrl("gallery_9.jpg"),
+              getAssetUrl("gallery_10.jpg"),
+              getAssetUrl("gallery_11.jpg"),
+              getAssetUrl("gallery_12.jpg")
+            ].map((src, idx) => (
               <motion.div 
                 key={idx}
                 initial="hidden"
@@ -712,6 +789,7 @@ export default function App() {
                   src={src} 
                   alt={`Gallery image ${idx + 1}`} 
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
+                  referrerPolicy="no-referrer"
                 />
               </motion.div>
             ))}
