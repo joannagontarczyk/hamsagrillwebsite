@@ -3,22 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { MapPin, Phone, Clock, Utensils, ChefHat, Star, ArrowRight, Menu, Flame, Globe, Instagram, Calendar, Coffee, Salad, Pizza, Cake, X, ChevronLeft, ChevronRight, Mail } from 'lucide-react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { translations } from './translations';
-import hamsa_alone from './assets/hamsa_alone.png';
-import background from './assets/background.png';
-import hamsa_logo_horizontal from './assets/hamsa_logo_horizontal.png';
-import zeberka_jagniece from './assets/zeberka_jagniece.jpg';
-import kanapka_kebab from './assets/kanapka_kebab.jpg';
-import authentic_falafel from './assets/authentic_falafel.jpg';
-import shakshuka from './assets/shakshuka.jpg';
-import hummus from './assets/hummus.jpg';
-import pide_z_salami from './assets/pide_z_salami.jpg';
-import baklawa_czekoladowa from './assets/baklawa_czekoladowa.jpg';
-
-const spaceImagesObj = import.meta.glob('./assets/space_*.jpg', { eager: true, query: '?url', import: 'default' });
-const spaceImagesList = Object.values(spaceImagesObj) as string[];
-
-const galleryImagesObj = import.meta.glob('./assets/gallery_*.jpg', { eager: true, query: '?url', import: 'default' });
-const galleryImagesList = Object.values(galleryImagesObj) as string[];
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -62,7 +46,8 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
   
-  const spaceImages = spaceImagesList;
+  const getAssetUrl = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+  const spaceImages = Array.from({ length: 7 }, (_, i) => getAssetUrl(`space_${i + 1}.jpg`));
   const [currentSpaceImgIndex, setCurrentSpaceImgIndex] = useState(0);
   const [selectedSpaceImg, setSelectedSpaceImg] = useState<string | null>(null);
 
@@ -175,7 +160,7 @@ export default function App() {
                 transition: { duration: 2.2, ease: "easeInOut" }
               }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-              src={hamsa_alone} 
+              src={getAssetUrl("hamsa_alone.png")} 
               alt="Hamsa Grill Logo" 
               className="w-[80vw] h-[80vh] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.7)] drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] z-10 relative"
             />
@@ -226,7 +211,7 @@ export default function App() {
 
       <div 
         className="relative bg-neutral-950 min-h-screen font-sans text-neutral-200 selection:bg-amber-500/30 selection:text-amber-200 bg-cover bg-center bg-fixed"
-      style={{ backgroundImage: `url("${background}")` }}
+      style={{ backgroundImage: `url("${getAssetUrl("background.png")}")` }}
     >
       {/* Ambient Background Glows */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
@@ -249,7 +234,7 @@ export default function App() {
               className="flex items-center group cursor-pointer flex-shrink-0"
             >
               <div className="h-14 md:h-16 flex items-center justify-center transition-all duration-500">
-                <img src={hamsa_logo_horizontal} alt="Hamsa Grill Logo" className="h-full w-auto object-contain" />
+                <img src={getAssetUrl("hamsa_logo_horizontal.png")} alt="Hamsa Grill Logo" className="h-full w-auto object-contain" />
               </div>
             </a>
             <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
@@ -554,7 +539,7 @@ export default function App() {
               className="md:col-span-8 group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 min-h-[400px] md:min-h-[500px]"
             >
               <img 
-                src={zeberka_jagniece} 
+                src={getAssetUrl("zeberka_jagniece.jpg")} 
                 alt="Premium Grilled Meat" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
               />
@@ -582,7 +567,7 @@ export default function App() {
                 className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 flex-1 min-h-[320px] p-8 hover:border-amber-500/30 transition-colors duration-500"
               >
                 <img 
-                  src={kanapka_kebab} 
+                  src={getAssetUrl("kanapka_kebab.jpg")} 
                   alt="Signature Kebab" 
                   className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 />
@@ -609,7 +594,7 @@ export default function App() {
                 className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 flex-1 min-h-[320px] p-8 hover:border-orange-500/30 transition-colors duration-500"
               >
                 <img 
-                  src={authentic_falafel} 
+                  src={getAssetUrl("authentic_falafel.jpg")} 
                   alt="Authentic Falafel" 
                   className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                   referrerPolicy="no-referrer"
@@ -641,7 +626,7 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-amber-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src={shakshuka} 
+                src={getAssetUrl("shakshuka.jpg")} 
                 alt="Traditional Breakfast" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
@@ -670,7 +655,7 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-orange-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src={hummus} 
+                src={getAssetUrl("hummus.jpg")} 
                 alt="Meze & Appetizers" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
@@ -699,7 +684,7 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-amber-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src={pide_z_salami} 
+                src={getAssetUrl("pide_z_salami.jpg")} 
                 alt="Pide (Turkish Pizza)" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
@@ -728,7 +713,7 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-orange-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src={baklawa_czekoladowa} 
+                src={getAssetUrl("baklawa_czekoladowa.jpg")} 
                 alt="Sweet Desserts" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
@@ -778,7 +763,20 @@ export default function App() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {galleryImagesList.map((src, idx) => (
+            {[
+              getAssetUrl("gallery_1.jpg"),
+              getAssetUrl("gallery_2.jpg"),
+              getAssetUrl("gallery_3.jpg"),
+              getAssetUrl("gallery_4.jpg"),
+              getAssetUrl("gallery_5.jpg"),
+              getAssetUrl("gallery_6.jpg"),
+              getAssetUrl("gallery_7.jpg"),
+              getAssetUrl("gallery_8.jpg"),
+              getAssetUrl("gallery_9.jpg"),
+              getAssetUrl("gallery_10.jpg"),
+              getAssetUrl("gallery_11.jpg"),
+              getAssetUrl("gallery_12.jpg")
+            ].map((src, idx) => (
               <motion.div 
                 key={idx}
                 initial="hidden"
