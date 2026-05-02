@@ -47,7 +47,7 @@ export default function App() {
   }, []);
   
   const getAssetUrl = (path: string) => `${import.meta.env.BASE_URL}${path}`;
-  const spaceImages = Array.from({ length: 7 }, (_, i) => getAssetUrl(`space (${i + 1}).jpg`));
+  const spaceImages = Array.from({ length: 7 }, (_, i) => getAssetUrl(`space_${i + 1}.jpg`));
   const [currentSpaceImgIndex, setCurrentSpaceImgIndex] = useState(0);
   const [selectedSpaceImg, setSelectedSpaceImg] = useState<string | null>(null);
 
@@ -160,7 +160,7 @@ export default function App() {
                 transition: { duration: 2.2, ease: "easeInOut" }
               }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-              src={getAssetUrl("Hamsa (alone).png")} 
+              src={getAssetUrl("Hamsa_alone.png")} 
               alt="Hamsa Grill Logo" 
               className="w-[80vw] h-[80vh] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.7)] drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] z-10 relative"
             />
@@ -764,18 +764,18 @@ export default function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              getAssetUrl("gallery (1).jpg"),
-              getAssetUrl("gallery (2).jpg"),
-              getAssetUrl("gallery (3).jpg"),
-              getAssetUrl("gallery (4).jpg"),
-              getAssetUrl("gallery (5).jpg"),
-              getAssetUrl("gallery (6).jpg"),
-              getAssetUrl("gallery (7).jpg"),
-              getAssetUrl("gallery (8).jpg"),
-              getAssetUrl("gallery (9).jpg"),
-              getAssetUrl("gallery (10).jpg"),
-              getAssetUrl("gallery (11).jpg"),
-              getAssetUrl("gallery (12).jpg")
+              getAssetUrl("gallery_1.jpg"),
+              getAssetUrl("gallery_2.jpg"),
+              getAssetUrl("gallery_3.jpg"),
+              getAssetUrl("gallery_4.jpg"),
+              getAssetUrl("gallery_5.jpg"),
+              getAssetUrl("gallery_6.jpg"),
+              getAssetUrl("gallery_7.jpg"),
+              getAssetUrl("gallery_8.jpg"),
+              getAssetUrl("gallery_9.jpg"),
+              getAssetUrl("gallery_10.jpg"),
+              getAssetUrl("gallery_11.jpg"),
+              getAssetUrl("gallery_12.jpg")
             ].map((src, idx) => (
               <motion.div 
                 key={idx}
