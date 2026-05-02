@@ -46,7 +46,7 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
   
-  const getAssetUrl = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+  const getAssetUrl = (path: string) => `${import.meta.env.BASE_URL}assets/${path}`;
   const spaceImages = Array.from({ length: 7 }, (_, i) => getAssetUrl(`space_${i + 1}.jpg`));
   const [currentSpaceImgIndex, setCurrentSpaceImgIndex] = useState(0);
   const [selectedSpaceImg, setSelectedSpaceImg] = useState<string | null>(null);
