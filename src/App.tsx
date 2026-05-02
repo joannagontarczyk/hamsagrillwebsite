@@ -45,7 +45,7 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
   
-  const spaceImages = Array.from({ length: 7 }, (_, i) => `/space (${i + 1}).jpg`);
+  const spaceImages = Array.from({ length: 7 }, (_, i) => `space (${i + 1}).jpg`);
   const [currentSpaceImgIndex, setCurrentSpaceImgIndex] = useState(0);
   const [selectedSpaceImg, setSelectedSpaceImg] = useState<string | null>(null);
 
@@ -158,7 +158,7 @@ export default function App() {
                 transition: { duration: 2.2, ease: "easeInOut" }
               }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-              src="/Hamsa (alone).png" 
+              src="Hamsa (alone).png" 
               alt="Hamsa Grill Logo" 
               className="w-[80vw] h-[80vh] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.7)] drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] z-10 relative"
             />
@@ -232,7 +232,7 @@ export default function App() {
               className="flex items-center group cursor-pointer flex-shrink-0"
             >
               <div className="h-14 md:h-16 flex items-center justify-center transition-all duration-500">
-                <img src="/Hamsa_logo_horizontal.png" alt="Hamsa Grill Logo" className="h-full w-auto object-contain" />
+                <img src="Hamsa_logo_horizontal.png" alt="Hamsa Grill Logo" className="h-full w-auto object-contain" />
               </div>
             </a>
             <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
@@ -537,7 +537,7 @@ export default function App() {
               className="md:col-span-8 group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 min-h-[400px] md:min-h-[500px]"
             >
               <img 
-                src="/Żeberka jagnięce.jpg" 
+                src="Żeberka jagnięce.jpg" 
                 alt="Premium Grilled Meat" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
               />
@@ -565,7 +565,7 @@ export default function App() {
                 className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 flex-1 min-h-[320px] p-8 hover:border-amber-500/30 transition-colors duration-500"
               >
                 <img 
-                  src="/Kanapka Kebab.jpg" 
+                  src="Kanapka Kebab.jpg" 
                   alt="Signature Kebab" 
                   className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 />
@@ -592,7 +592,7 @@ export default function App() {
                 className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 flex-1 min-h-[320px] p-8 hover:border-orange-500/30 transition-colors duration-500"
               >
                 <img 
-                  src="https://restaumatic-production.imgix.net/uploads/accounts/23439/media_library/a9584d36-20fd-41e7-a2c1-afb08dee195d.jpg?auto=compress%2Cformat&blur=0&crop=focalpoint&fit=max&fp-x=0.5&fp-y=0.5&h=auto&rect=0%2C0%2C2000%2C1154&w=1920" 
+                  src="Authentic Falafel.jpg" 
                   alt="Authentic Falafel" 
                   className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                   referrerPolicy="no-referrer"
@@ -624,7 +624,7 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-amber-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src="/Shakshuka.jpg" 
+                src="Shakshuka.jpg" 
                 alt="Traditional Breakfast" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
@@ -653,7 +653,7 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-orange-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src="/Hummus.jpg" 
+                src="Hummus.jpg" 
                 alt="Meze & Appetizers" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
@@ -682,7 +682,7 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-amber-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src="/Pide z salami.jpg" 
+                src="Pide z salami.jpg" 
                 alt="Pide (Turkish Pizza)" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
@@ -711,7 +711,7 @@ export default function App() {
               className="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 p-8 hover:border-orange-500/30 transition-colors duration-500 min-h-[320px] flex flex-col justify-end"
             >
               <img 
-                src="/Baklawa czekoladowa.jpg" 
+                src="Baklawa czekoladowa.jpg" 
                 alt="Sweet Desserts" 
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
@@ -762,18 +762,18 @@ export default function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              "/gallery (1).jpg",
-              "/gallery (2).jpg",
-              "/gallery (3).jpg",
-              "/gallery (4).jpg",
-              "/gallery (5).jpg",
-              "/gallery (6).jpg",
-              "/gallery (7).jpg",
-              "/gallery (8).jpg",
-              "/gallery (9).jpg",
-              "/gallery (10).jpg",
-              "/gallery (11).jpg",
-              "/gallery (12).jpg"
+              "gallery (1).jpg",
+              "gallery (2).jpg",
+              "gallery (3).jpg",
+              "gallery (4).jpg",
+              "gallery (5).jpg",
+              "gallery (6).jpg",
+              "gallery (7).jpg",
+              "gallery (8).jpg",
+              "gallery (9).jpg",
+              "gallery (10).jpg",
+              "gallery (11).jpg",
+              "gallery (12).jpg"
             ].map((src, idx) => (
               <motion.div 
                 key={idx}
