@@ -232,7 +232,7 @@ export default function App() {
               className="flex items-center group cursor-pointer flex-shrink-0"
             >
               <div className="h-14 md:h-16 flex items-center justify-center transition-all duration-500">
-                <img src="Hamsa_logo_horizontal.png" alt="Hamsa Grill Logo" className="h-full w-auto object-contain" />
+                <img src="public/Hamsa_logo_horizontal.png" alt="Hamsa Grill Logo" className="h-full w-auto object-contain" />
               </div>
             </a>
             <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
