@@ -8,8 +8,8 @@ export default defineConfig(({mode}) => {
   const repoName = process.env.GITHUB_REPOSITORY ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/` : '/';
   
   return {
-   base: process.env.GITHUB_ACTIONS ? repoName : '/',
-    //base: '/'
+   //base: process.env.GITHUB_ACTIONS ? repoName : '/',
+    base: '/',
     plugins: [react(), tailwindcss()],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
