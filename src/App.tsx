@@ -994,7 +994,7 @@ export default function App() {
                           <p className="text-amber-500/80 text-sm font-medium -mt-1">{t.order.mokotowOptions}</p>
                         </div>
                         <div className="flex w-full flex-col sm:flex-row gap-4">
-                          <a href="https://www.hamsagrill.pl/restauracja/hamsa-grill" target="_blank" rel="noopener noreferrer" className="flex-1 bg-amber-500 text-neutral-950 py-4 px-4 rounded-2xl font-bold flex items-center justify-center hover:bg-amber-400 transition-colors text-sm text-center">
+                          <a href="https://https://hamsagrillgarazowa.goorder.pl/" target="_blank" rel="noopener noreferrer" className="flex-1 bg-amber-500 text-neutral-950 py-4 px-4 rounded-2xl font-bold flex items-center justify-center hover:bg-amber-400 transition-colors text-sm text-center">
                             {t.order.orderOnline}
                           </a>
                           <a href="tel:+48224156789" className="flex-1 bg-white text-neutral-950 py-3 px-4 rounded-2xl font-bold flex flex-col items-center justify-center hover:bg-neutral-100 transition-colors text-sm text-center">
