@@ -1173,7 +1173,7 @@ export default function App() {
                     {t.order.mokotowAddress.split(',')[1].trim()}<br />
                     <span className="block mt-2 text-white-400">{t.order.mokotowOptions}</span>
                   </p>
-                  <a href="https://www.hamsagrill.pl/restauracja/hamsa-grill" target="_blank" rel="noopener noreferrer" className="w-full mt-auto py-3 rounded-full font-medium text-white border border-orange-500/50 hover:bg-orange-500 hover:text-neutral-950 transition-all text-sm flex items-center justify-center gap-2">
+                  <a href="https://hamsagrillgarazowa.goorder.pl/" target="_blank" rel="noopener noreferrer" className="w-full mt-auto py-3 rounded-full font-medium text-white border border-orange-500/50 hover:bg-orange-500 hover:text-neutral-950 transition-all text-sm flex items-center justify-center gap-2">
                     {t.order.orderOnline} <ArrowRight className="h-4 w-4" />
                   </a>
                 </div>
