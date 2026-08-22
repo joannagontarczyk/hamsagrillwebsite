@@ -72,7 +72,9 @@ export default function App() {
     const selectedDateObj = getSelectedDate(reservationDate);
     if (!selectedDateObj) return [];
     
-    const isSunday = selectedDateObj.getDay() === 0;
+    const day = selectedDateObj.getDay();
+    const isSunday = day === 0;
+    const isFriSat = day === 5 || day === 6;
     
     const isToday =
       selectedDateObj.getDate() === now.getDate() &&
@@ -80,7 +82,7 @@ export default function App() {
       selectedDateObj.getFullYear() === now.getFullYear();
 
     const startHour = isSunday ? 11 : 10;
-    const endHour = isSunday ? 21 : 22;
+    const endHour = isFriSat ? 23 : 22;
 
     const currentHour = now.getHours();
     
@@ -108,14 +110,16 @@ export default function App() {
     const selectedDateObj = getSelectedDate(reservationDate);
     if (!selectedDateObj) return [];
 
-    const isSunday = selectedDateObj.getDay() === 0;
+    const day = selectedDateObj.getDay();
+    const isSunday = day === 0;
+    const isFriSat = day === 5 || day === 6;
     
     const isToday =
       selectedDateObj.getDate() === now.getDate() &&
       selectedDateObj.getMonth() === now.getMonth() &&
       selectedDateObj.getFullYear() === now.getFullYear();
 
-    const endHour = isSunday ? 21 : 22;
+    const endHour = isFriSat ? 23 : 22;
     const h = parseInt(hourStr, 10);
 
     const minutes = ["00", "15", "30", "45"];
@@ -868,8 +872,12 @@ export default function App() {
                             <h4 className="text-white font-medium text-lg mb-4">{t.location.openingHours}</h4>
                             <div className="flex flex-col text-neutral-400 gap-4 sm:gap-2">
                               <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
-                                <span>{t.location.monSat}</span>
-                                <span className="text-white font-medium">{t.location.monSatHours}</span>
+                                <span>{t.location.monThu}</span>
+                                <span className="text-white font-medium">{t.location.monThuHours}</span>
+                              </div>
+                              <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
+                                <span>{t.location.friSat}</span>
+                                <span className="text-white font-medium">{t.location.friSatHours}</span>
                               </div>
                               <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-1 sm:gap-0">
                                 <span>{t.location.sunday}</span>
