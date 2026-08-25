@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 import React, { useState, useEffect } from 'react';
-import { MapPin, Phone, Clock, Utensils, ChefHat, Star, ArrowRight, Menu, Flame, Globe, Instagram, Calendar, Coffee, Salad, Pizza, Cake, X, ChevronLeft, ChevronRight, Mail } from 'lucide-react';
+import { MapPin, Phone, Clock, Utensils, ChefHat, Star, ArrowRight, Menu, Flame, Globe, Instagram, Calendar, Coffee, Salad, Pizza, Cake, X, ChevronLeft, ChevronRight, Mail, Megaphone } from 'lucide-react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { translations } from './translations';
 
@@ -22,6 +22,162 @@ const scaleIn = {
   show: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] } }
 };
 
+const AnnouncementSlider = ({ images, isOpen, onClose, t }: { images: string[], isOpen: boolean, onClose: () => void, t: any }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [zoomedImg, setZoomedImg] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!isOpen || images.length === 0 || isPaused || zoomedImg) return;
+    
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
+    const threshold = isMobile ? 1 : 3;
+    
+    if (images.length <= threshold) return;
+
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [isOpen, images.length, isPaused, zoomedImg]);
+
+  if (!isOpen) return null;
+
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % images.length);
+  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
+  const visibleCount = isMobile ? 1 : Math.min(3, images.length);
+  
+  const getModalMaxWidth = () => {
+    if (isMobile) return 'max-w-[95vw]';
+    if (images.length === 1) return 'max-w-2xl';
+    if (images.length === 2) return 'max-w-5xl';
+    return 'max-w-7xl';
+  };
+
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[20000] flex items-center justify-center p-4 bg-neutral-950/70 backdrop-blur-md"
+        onClick={onClose}
+      >
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0, y: 20 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          exit={{ scale: 0.9, opacity: 0, y: 20 }}
+          className={`bg-neutral-900 border border-white/10 rounded-[2.5rem] p-6 md:p-10 w-full ${getModalMaxWidth()} relative overflow-hidden shadow-2xl`}
+          onClick={(e) => e.stopPropagation()}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
+          
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 text-neutral-400 hover:text-white transition-colors z-50 bg-neutral-800/50 p-2 sm:p-3 rounded-full"
+          >
+            <X className="h-5 w-5 sm:h-6 sm:h-6" />
+          </button>
+
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 mb-8 md:mb-10 pt-4 sm:pt-0">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-500/20 flex items-center justify-center border border-amber-500/30">
+              <Megaphone className="h-6 w-6 sm:h-7 sm:w-7 text-amber-500" />
+            </div>
+            <h3 className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-white leading-tight">
+              {t.nav.announcements}
+            </h3>
+          </div>
+
+          <div className="relative overflow-hidden">
+            <div 
+              className="flex transition-transform duration-500 ease-out" 
+              style={{ 
+                transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
+                gap: '1rem'
+              }}
+            >
+              {images.map((src, idx) => (
+                <div 
+                  key={idx} 
+                  className="flex-shrink-0 aspect-square rounded-3xl overflow-hidden border border-white/5 bg-neutral-950 cursor-zoom-in group relative"
+                  style={{ width: `calc(${100 / visibleCount}% - ${(visibleCount - 1) * 16 / visibleCount}px)` }}
+                  onClick={() => setZoomedImg(src)}
+                >
+                  <img 
+                    src={src} 
+                    alt={`Announcement ${idx + 1}`} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <div className="bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/30">
+                      <ChevronRight className="h-6 w-6 text-white rotate-[-45deg]" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {images.length > visibleCount && (
+              <>
+                <button onClick={prevSlide} className="absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/60 hover:bg-amber-500 rounded-full flex items-center justify-center text-white transition-all backdrop-blur-sm z-30">
+                  <ChevronLeft className="h-6 w-6" />
+                </button>
+                <button onClick={nextSlide} className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/60 hover:bg-amber-500 rounded-full flex items-center justify-center text-white transition-all backdrop-blur-sm z-30">
+                  <ChevronRight className="h-6 w-6" />
+                </button>
+              </>
+            )}
+          </div>
+
+          {images.length > visibleCount && (
+            <div className="flex justify-center gap-2.5 mt-8">
+              {images.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`h-2 rounded-full transition-all ${currentIndex === idx ? 'bg-amber-500 w-10' : 'bg-white/20 w-2 hover:bg-white/40'}`}
+                />
+              ))}
+            </div>
+          )}
+        </motion.div>
+      </motion.div>
+
+      <AnimatePresence>
+        {zoomedImg && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setZoomedImg(null)}
+            className="fixed inset-0 z-[25000] flex items-center justify-center p-4 bg-neutral-950/95 backdrop-blur-sm cursor-zoom-out"
+          >
+            <motion.img
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              src={zoomedImg}
+              alt="Enlarged announcement"
+              className="max-w-[95vw] max-h-[95vh] object-contain rounded-2xl shadow-2xl"
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
+            />
+            <button
+              onClick={() => setZoomedImg(null)}
+              className="absolute top-6 right-6 text-white/70 hover:text-white bg-black/50 hover:bg-amber-500 p-4 rounded-full transition-colors z-[25001] cursor-pointer"
+            >
+              <X className="h-7 w-7" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+
 export default function App() {
   const [lang, setLang] = useState<'en' | 'pl'>(() => {
     if (typeof navigator !== 'undefined' && navigator.language.startsWith('pl')) {
@@ -38,6 +194,8 @@ export default function App() {
   const [isCallModalOpen, setIsCallModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
+  const [isAnnouncementsOpen, setIsAnnouncementsOpen] = useState(false);
+  const [hasShownAnnouncements, setHasShownAnnouncements] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -45,8 +203,39 @@ export default function App() {
     }, 2500);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (!showSplash && !hasShownAnnouncements) {
+      const timer = setTimeout(() => {
+        setIsAnnouncementsOpen(true);
+        setHasShownAnnouncements(true);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [showSplash, hasShownAnnouncements]);
   
   const getAssetUrl = (path: string) => `${import.meta.env.BASE_URL}static/${path}`;
+  const getAnnouncementUrl = (lang: 'eng' | 'pol', path: string) => `${import.meta.env.BASE_URL}announcements/${lang}/${path}`;
+
+  const [announcementImages, setAnnouncementImages] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchAnnouncements = async () => {
+      const serverLang = lang === 'en' ? 'eng' : 'pol';
+      try {
+        const response = await fetch(`${import.meta.env.BASE_URL}announcements-manifest.json`);
+        if (response.ok) {
+          const manifest = await response.json();
+          const files = manifest[serverLang] || [];
+          setAnnouncementImages(files.map((file: string) => getAnnouncementUrl(serverLang, file)));
+        }
+      } catch (error) {
+        console.error('Failed to fetch announcements manifest:', error);
+      }
+    };
+    fetchAnnouncements();
+  }, [lang]);
+
   const spaceImages = Array.from({ length: 7 }, (_, i) => getAssetUrl(`space_${i + 1}.jpg`));
   const [currentSpaceImgIndex, setCurrentSpaceImgIndex] = useState(0);
   const [selectedSpaceImg, setSelectedSpaceImg] = useState<string | null>(null);
@@ -269,7 +458,7 @@ export default function App() {
                   e.preventDefault();
                   setIsOrderModalOpen(true);
                 }}
-                className="bg-amber-500 text-neutral-950 px-4 xl:px-6 py-2.5 rounded-2xl font-bold flex items-center justify-center hover:bg-amber-400 transition-colors whitespace-nowrap text-xs xl:text-sm tracking-wide"
+                className="bg-amber-500 text-neutral-950 px-3 xl:px-4 py-2.5 rounded-2xl font-bold flex items-center justify-center hover:bg-amber-400 transition-colors whitespace-nowrap text-xs xl:text-sm tracking-wide"
               >
                 {t.order.orderOnline}
               </button>
@@ -279,26 +468,35 @@ export default function App() {
                   e.preventDefault();
                   setIsCallModalOpen(true);
                 }}
-                className="bg-white text-neutral-950 px-4 xl:px-6 py-2.5 rounded-2xl font-bold flex items-center justify-center hover:bg-neutral-100 transition-colors whitespace-nowrap text-xs xl:text-sm tracking-wide"
+                className="bg-white text-neutral-950 px-3 xl:px-4 py-2.5 rounded-2xl font-bold flex items-center justify-center hover:bg-neutral-100 transition-colors whitespace-nowrap text-xs xl:text-sm tracking-wide"
               >
                 {t.nav.callNow}
               </button>
 
               <button 
                 onClick={() => { setReservationLocation(''); setIsReservationModalOpen(true); }}
-                className="bg-neutral-800 text-white px-4 xl:px-6 py-2.5 rounded-2xl font-bold flex items-center justify-center hover:bg-neutral-700 transition-colors border border-white/10 whitespace-nowrap text-xs xl:text-sm tracking-wide"
+                className="bg-neutral-800 text-white px-3 xl:px-4 py-2.5 rounded-2xl font-bold flex items-center justify-center hover:bg-neutral-700 transition-colors border border-white/10 whitespace-nowrap text-xs xl:text-sm tracking-wide"
               >
                 {t.nav.reservation}
               </button>
-              <a 
-                href="https://www.instagram.com/hamsagrillwarsaw/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-orange-500 hover:text-orange-400 transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-[38px] w-[38px] xl:h-[42px] xl:w-[42px]" />
-              </a>
+              <div className="flex items-center gap-2 xl:gap-3">
+                <a 
+                  href="https://www.instagram.com/hamsagrillwarsaw/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-orange-500 hover:text-orange-400 transition-colors"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="h-[38px] w-[38px] xl:h-[42px] xl:w-[42px]" />
+                </a>
+                <button 
+                  onClick={() => setIsAnnouncementsOpen(true)}
+                  className="text-orange-500 hover:text-orange-400 transition-colors"
+                  aria-label="Announcements"
+                >
+                  <Megaphone className="h-[38px] w-[38px] xl:h-[42px] xl:w-[42px]" />
+                </button>
+              </div>
             </div>
             <div className="lg:hidden flex items-center">
               <button 
@@ -351,6 +549,13 @@ export default function App() {
                   <a href="https://www.instagram.com/hamsagrillwarsaw/" target="_blank" rel="noopener noreferrer" className="absolute right-4 text-orange-500 hover:text-orange-400 transition-colors" aria-label="Instagram">
                     <Instagram className="h-6 w-6" />
                   </a>
+                  <button 
+                    onClick={() => { setIsAnnouncementsOpen(true); setIsMobileMenuOpen(false); }}
+                    className="absolute left-4 text-orange-500 hover:text-orange-400 transition-colors"
+                    aria-label="Announcements"
+                  >
+                    <Megaphone className="h-6 w-6" />
+                  </button>
                 </div>
 
                 <div className="flex flex-col gap-3 pb-2">
@@ -1464,6 +1669,17 @@ export default function App() {
               </form>
             </motion.div>
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isAnnouncementsOpen && (
+          <AnnouncementSlider 
+            images={announcementImages} 
+            isOpen={isAnnouncementsOpen} 
+            onClose={() => setIsAnnouncementsOpen(false)}
+            t={t}
+          />
         )}
       </AnimatePresence>
     </div>
