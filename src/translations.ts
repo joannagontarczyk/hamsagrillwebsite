@@ -105,15 +105,38 @@ export const translations = {
       features: [
         { title: "Fresh Daily", desc: "Fresh ingredients sourced locally" },
         { title: "Authentic", desc: "Traditional recipes & flavors" },
-        { title: "Welcoming", desc: "Warm and modern dining space" },
+        { title: "Welcoming", desc: "Warm and modern space for single or group dining" },
         { title: "Fast Service", desc: "Hot and fresh, every time" }
       ],
       fresh: "Fresh",
+      spaceAlts: [
+        "Hamsa Grill Ochota - restaurant for special events",
+        "Hamsa Grill Ochota - restaurant for birthdays",
+        "Hamsa Grill Ochota - restaurant for family gatherings",
+        "Hamsa Grill Ochota - restaurant for baptisms and communions",
+        "Hamsa Grill Ochota - restaurant for corporate meetings",
+        "Hamsa Grill Ochota - restaurant for groups",
+        "Hamsa Grill Ochota - restaurant for family gatherings"
+      ]
     },
     gallery: {
       subtitle: "Gallery",
       title1: "A Feast for the",
       title2: "Eyes",
+      imageAlts: [
+        "Authentic crispy falafel at Hamsa Grill Restaurant Warsaw",
+        "Breakfast - avocado spread (guacamole) on crispy toast with a fried egg",
+        "Juicy chicken shish taouk with vegetables ready for the grill",
+        "Breakfast - fluffy pancakes with seasonal fruit, whipped cream and sweet sauces",
+        "Fresh doner kebab (shawarma) on the grill",
+        "Classic hummus platter with olive oil and fresh pita",
+        "Mix Grill set with authentic Middle Eastern halal meats",
+        "Crispy, fresh and filling salad with grilled chicken and golden croutons",
+        "Warming, thick lentil cream soup served with fresh Arabic bread",
+        "Traditional Adana kebab grilled over an open flame",
+        "Signature beef and lamb shawarma in a wrap (pita or lavash) - Hamsa Grill",
+        "Grilled sea bream served with fries and fresh salads"
+      ]
     },
     location: {
       subtitle: "Locations",
@@ -262,15 +285,38 @@ export const translations = {
       features: [
         { title: "Codziennie Świeże", desc: "Świeże składniki od lokalnych dostawców" },
         { title: "Autentyczne", desc: "Tradycyjne receptury i smaki" },
-        { title: "Zapraszające", desc: "Ciepła i nowoczesna przestrzeń" },
+        { title: "Zapraszające", desc: "Ciepła i nowoczesna przestrzeń do samotnych i grupowych posiłków" },
         { title: "Szybka Obsługa", desc: "Gorące i świeże, za każdym razem" }
       ],
       fresh: "Świeże",
+      spaceAlts: [
+        "Hamsa Grill Ochota - restauracja na imprezy okolicznościowe",
+        "Hamsa Grill Ochota - restauracja na urodziny",
+        "Hamsa Grill Ochota - restauracja na spotkania rodzinne",
+        "Hamsa Grill Ochota - restauracja na chrzciny i komunie",
+        "Hamsa Grill Ochota - restauracja na spotkania firmowe",
+        "Hamsa Grill Ochota - restauracja dla grup",
+        "Hamsa Grill Ochota - restauracja na spotkania rodzinne"
+      ]
     },
     gallery: {
       subtitle: "Galeria",
       title1: "Uczta dla",
       title2: "Oczu",
+      imageAlts: [
+        "Autentyczny chrupiący falafel w restauracji Hamsa Grill Warszawa",
+        "Śniadanie - pasta avocado (guacamole) na chrupiącym toście i jajkiem sadzonym",
+        "Soczysty szaszłyk z kurczaka z warzywami gotowy na grill",
+        "Śniadanie - puszyste pancake'i z sezonowymi owocami, bitą śmietaną i słodkimi sosami",
+        "Świeży kebab doner (shoarma) na grillu",
+        "Klasyczny talerz hummusu z oliwą i świeżą pitą",
+        "Zestaw Mix Grill z autentycznymi bliskowschodnimi mięsami halal",
+        "Chrupiąca, świeża i sycąca sałatka z grillowanym kurczakiem i złocistymi grzankami",
+        "Przyjemnie rozgrzewający, gęsty krem zupa z soczewicy w tradycyjnym wydaniu. Podawana z naszym świeżo wypiekanym chlebkiem arabskim.",
+        "Tradycyjny kebab Adana grillowany na otwartym ogniu",
+        "Popisowa shoarma wołowo-jagnięca w wrapie (pita lub lawasz) - Hamsa Grill",
+        "Grillowana dorada z frytkami i zestawem surówek"
+      ]
     },
     location: {
       subtitle: "Lokalizacje",
