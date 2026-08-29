@@ -214,6 +214,13 @@ export default function App() {
     }
   }, [showSplash, hasShownAnnouncements]);
   
+  useEffect(() => {
+    const pageTitle = lang === 'en' 
+      ? "Hamsa Grill Restaurant | Authentic Middle Eastern Cuisine in Warsaw"
+      : "Hamsa Grill Restaurant | Autentyczna Kuchnia Bliskowschodnia w Warszawie";
+    document.title = pageTitle;
+  }, [lang]);
+
   const getAssetUrl = (path: string) => `${import.meta.env.BASE_URL}static/${path}`;
   const getAnnouncementUrl = (lang: 'eng' | 'pol', path: string) => `${import.meta.env.BASE_URL}announcements/${lang}/${path}`;
 
@@ -648,7 +655,7 @@ export default function App() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
                     src={spaceImages[currentSpaceImgIndex]}
-                    alt={`Space image ${currentSpaceImgIndex + 1}`}
+                    alt={t.about.spaceAlts[currentSpaceImgIndex] || `Space image ${currentSpaceImgIndex + 1}`}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-pointer"
                     onClick={() => setSelectedSpaceImg(spaceImages[currentSpaceImgIndex])}
                   />
@@ -993,7 +1000,7 @@ export default function App() {
               >
                 <img 
                   src={src} 
-                  alt={`Gallery image ${idx + 1}`} 
+                  alt={t.gallery.imageAlts[idx] || `${t.gallery.subtitle} ${idx + 1}`} 
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
                   referrerPolicy="no-referrer"
                 />
@@ -1288,7 +1295,7 @@ export default function App() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               src={selectedSpaceImg}
-              alt="Enlarged view"
+              alt={selectedSpaceImg ? t.about.spaceAlts[spaceImages.indexOf(selectedSpaceImg)] : "Enlarged view"}
               className="max-w-[90vw] max-h-[90vh] object-contain rounded-2xl shadow-2xl"
               onClick={(e: React.MouseEvent) => e.stopPropagation()}
             />
@@ -1371,7 +1378,7 @@ export default function App() {
                     {t.order.ochotaAddress.split(',')[1].trim()}<br />
                     <span className="block mt-2 text-white-400">{t.order.ochotaOptions}</span>
                   </p>
-                  <a href="https://hamsagrillrestaurant.goorder.pl/" target="_blank" rel="noopener noreferrer" className="w-full mt-auto py-3 rounded-full font-medium text-white border border-amber-500/50 hover:bg-amber-500 hover:text-neutral-950 transition-all text-sm flex items-center justify-center gap-2">
+                  <a href="https://hamsagrillrestaurant.goorder.pl/menu" target="_blank" rel="noopener noreferrer" className="w-full mt-auto py-3 rounded-full font-medium text-white border border-amber-500/50 hover:bg-amber-500 hover:text-neutral-950 transition-all text-sm flex items-center justify-center gap-2">
                     {t.order.orderOnline} <ArrowRight className="h-4 w-4" />
                   </a>
                 </div>
