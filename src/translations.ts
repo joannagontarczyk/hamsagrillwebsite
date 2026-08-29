@@ -104,7 +104,7 @@ export const translations = {
       ],
       features: [
         { title: "Fresh Daily", desc: "Fresh ingredients sourced locally" },
-        { title: "Authentic", desc: "Traditional recipes & flavors" },
+        { title: "Authentic", desc: "Traditional Middle Eastern recipes & flavors" },
         { title: "Welcoming", desc: "Warm and modern space for single or group dining" },
         { title: "Fast Service", desc: "Hot and fresh, every time" }
       ],
@@ -284,7 +284,7 @@ export const translations = {
       ],
       features: [
         { title: "Codziennie Świeże", desc: "Świeże składniki od lokalnych dostawców" },
-        { title: "Autentyczne", desc: "Tradycyjne receptury i smaki" },
+        { title: "Autentyczne", desc: "Tradycyjne bliskowschodnie receptury i smaki" },
         { title: "Zapraszające", desc: "Ciepła i nowoczesna przestrzeń do samotnych i grupowych posiłków" },
         { title: "Szybka Obsługa", desc: "Gorące i świeże, za każdym razem" }
       ],
