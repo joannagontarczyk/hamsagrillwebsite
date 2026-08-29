@@ -116,7 +116,7 @@ export const translations = {
         "Hamsa Grill Ochota - restaurant for baptisms and communions",
         "Hamsa Grill Ochota - restaurant for corporate meetings",
         "Hamsa Grill Ochota - restaurant for groups",
-        "Hamsa Grill Ochota - restaurant for family gatherings"
+        "Hamsa Grill Ochota - restaurant for corporate coworker gatherings"
       ]
     },
     gallery: {
@@ -296,7 +296,7 @@ export const translations = {
         "Hamsa Grill Ochota - restauracja na chrzciny i komunie",
         "Hamsa Grill Ochota - restauracja na spotkania firmowe",
         "Hamsa Grill Ochota - restauracja dla grup",
-        "Hamsa Grill Ochota - restauracja na spotkania rodzinne"
+        "Hamsa Grill Ochota - restauracja na spotkania firmowe"
       ]
     },
     gallery: {
