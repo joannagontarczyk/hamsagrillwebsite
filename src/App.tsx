@@ -222,7 +222,7 @@ export default function App() {
   }, [lang]);
 
   const getAssetUrl = (path: string) => `${import.meta.env.BASE_URL}static/${path}`;
-  const getAnnouncementUrl = (lang: 'eng' | 'pol', path: string) => `${import.meta.env.BASE_URL}announcements/${lang}/${path}`;
+  const getAnnouncementUrl = (lang: 'eng' | 'pol', path: string) => `${import.meta.env.BASE_URL}announcements/${lang}/${encodeURIComponent(path)}`;
 
   const [announcementImages, setAnnouncementImages] = useState<string[]>([]);
 
