@@ -37,7 +37,7 @@ const AnnouncementSlider = ({ images, isOpen, onClose, t }: { images: string[], 
 
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, 2000);
     return () => clearInterval(timer);
   }, [isOpen, images.length, isPaused, zoomedImg]);
 
@@ -96,22 +96,23 @@ const AnnouncementSlider = ({ images, isOpen, onClose, t }: { images: string[], 
             <div 
               className="flex transition-transform duration-500 ease-out" 
               style={{ 
-                transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
-                gap: '1rem'
+                transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`
               }}
             >
               {images.map((src, idx) => (
                 <div 
                   key={idx} 
-                  className="flex-shrink-0 aspect-square rounded-3xl overflow-hidden border border-white/5 bg-neutral-950 cursor-zoom-in group relative"
-                  style={{ width: `calc(${100 / visibleCount}% - ${(visibleCount - 1) * 16 / visibleCount}px)` }}
+                  className="flex-shrink-0 aspect-square rounded-3xl overflow-hidden cursor-zoom-in group relative px-2 bg-transparent"
+                  style={{ width: `${100 / visibleCount}%` }}
                   onClick={() => setZoomedImg(src)}
                 >
-                  <img 
-                    src={src} 
-                    alt={`Announcement ${idx + 1}`} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                  />
+                  <div className="w-full h-full rounded-3xl overflow-hidden">
+                    <img 
+                      src={src} 
+                      alt={`Announcement ${idx + 1}`} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                    />
+                  </div>
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
                     <div className="bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/30">
                       <ChevronRight className="h-6 w-6 text-white rotate-[-45deg]" />
@@ -245,7 +246,16 @@ export default function App() {
 
   const spaceImages = Array.from({ length: 7 }, (_, i) => getAssetUrl(`space_${i + 1}.jpg`));
   const [currentSpaceImgIndex, setCurrentSpaceImgIndex] = useState(0);
+  const [isSpacePaused, setIsSpacePaused] = useState(false);
   const [selectedSpaceImg, setSelectedSpaceImg] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (isSpacePaused || selectedSpaceImg) return;
+    const timer = setInterval(() => {
+      setCurrentSpaceImgIndex((prev) => (prev + 1) % spaceImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [isSpacePaused, selectedSpaceImg, spaceImages.length]);
 
   const t = translations[lang];
 
@@ -646,7 +656,11 @@ export default function App() {
             </motion.div>
             
             <div className="relative w-full flex flex-col">
-              <div className="relative w-full h-[500px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl z-10 group">
+              <div 
+                className="relative w-full h-[500px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl z-10 group"
+                onMouseEnter={() => setIsSpacePaused(true)}
+                onMouseLeave={() => setIsSpacePaused(false)}
+              >
                 <AnimatePresence mode="wait">
                   <motion.img 
                     key={currentSpaceImgIndex}
