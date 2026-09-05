@@ -1,5 +1,8 @@
 {
-  "name": "Remix: Hamsa Grill Restaurant",
-  "description": "Landing page for Hamsa Grill Restaurant in Warszawa.",
-  "requestFramePermissions": []
+  "name": "Hamsa Grill Restaurant | Authentic Middle Eastern Cuisine",
+  "description": "Experience the finest grilled meats, authentic falafel, and signature kebabs at Hamsa Grill Restaurant in Warsaw. Tradition meets modern taste in the heart of Ochota and Mokotów.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
