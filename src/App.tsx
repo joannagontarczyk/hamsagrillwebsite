@@ -197,6 +197,7 @@ export default function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [isAnnouncementsOpen, setIsAnnouncementsOpen] = useState(false);
   const [hasShownAnnouncements, setHasShownAnnouncements] = useState(false);
+  const [announcementImages, setAnnouncementImages] = useState<string[]>([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -206,14 +207,14 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (!showSplash && !hasShownAnnouncements) {
+    if (!showSplash && !hasShownAnnouncements && announcementImages.length > 0) {
       const timer = setTimeout(() => {
         setIsAnnouncementsOpen(true);
         setHasShownAnnouncements(true);
       }, 2000);
       return () => clearTimeout(timer);
     }
-  }, [showSplash, hasShownAnnouncements]);
+  }, [showSplash, hasShownAnnouncements, announcementImages]);
   
   useEffect(() => {
     const pageTitle = lang === 'en' 
@@ -224,8 +225,6 @@ export default function App() {
 
   const getAssetUrl = (path: string) => `${import.meta.env.BASE_URL}static/${path}`;
   const getAnnouncementUrl = (lang: 'eng' | 'pol', path: string) => `${import.meta.env.BASE_URL}announcements/${lang}/${encodeURIComponent(path)}`;
-
-  const [announcementImages, setAnnouncementImages] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchAnnouncements = async () => {
@@ -506,6 +505,7 @@ export default function App() {
                 >
                   <Instagram className="h-[38px] w-[38px] xl:h-[42px] xl:w-[42px]" />
                 </a>
+              {announcementImages.length > 0 && (
                 <button 
                   onClick={() => setIsAnnouncementsOpen(true)}
                   className="text-orange-500 hover:text-orange-400 transition-colors"
@@ -513,6 +513,7 @@ export default function App() {
                 >
                   <Megaphone className="h-[38px] w-[38px] xl:h-[42px] xl:w-[42px]" />
                 </button>
+              )}
               </div>
             </div>
             <div className="lg:hidden flex items-center">
@@ -566,13 +567,15 @@ export default function App() {
                   <a href="https://www.instagram.com/hamsagrillwarsaw/" target="_blank" rel="noopener noreferrer" className="absolute right-4 text-orange-500 hover:text-orange-400 transition-colors" aria-label="Instagram">
                     <Instagram className="h-6 w-6" />
                   </a>
-                  <button 
-                    onClick={() => { setIsAnnouncementsOpen(true); setIsMobileMenuOpen(false); }}
-                    className="absolute left-4 text-orange-500 hover:text-orange-400 transition-colors"
-                    aria-label="Announcements"
-                  >
-                    <Megaphone className="h-6 w-6" />
-                  </button>
+                  {announcementImages.length > 0 && (
+                    <button 
+                      onClick={() => { setIsAnnouncementsOpen(true); setIsMobileMenuOpen(false); }}
+                      className="absolute left-4 text-orange-500 hover:text-orange-400 transition-colors"
+                      aria-label="Announcements"
+                    >
+                      <Megaphone className="h-6 w-6" />
+                    </button>
+                  )}
                 </div>
 
                 <div className="flex flex-col gap-3 pb-2">
